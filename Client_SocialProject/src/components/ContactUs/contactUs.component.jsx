@@ -116,7 +116,7 @@ export const FormContactUs = () => {
           />
         </div>
         <textarea
-          value={formData.Comments}
+          value={formData.Message}
           placeholder="Add Message"
           onChange={handleChange}
           name="Message"
