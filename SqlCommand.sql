@@ -1,6 +1,6 @@
 ----Creating a user message table
 create table Contact_Us(Code int primary key identity, 
-FirstName nvarchar(max),LastName nvarchar(max),Email nvarchar(max), Message nvarchar(max), JoinedNewsletter bit, date datetime)
+FirstName nvarchar(max),LastName nvarchar(max),Email nvarchar(max), Message nvarchar(max), JoinedNewsletter bit, Date datetime)
 
 ----Creating a registration request table
 create table Register_Applications(Code int primary key identity, 

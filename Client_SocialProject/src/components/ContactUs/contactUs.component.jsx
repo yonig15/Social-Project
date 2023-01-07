@@ -9,8 +9,6 @@ export const FormContactUs = () => {
     FirstName: "",
     LastName: "",
     Email: "",
-    Password: "",
-    PasswordConfirm: "",
     Comments: "",
     JoinedNewsletter: true,
   });
@@ -55,11 +53,9 @@ export const FormContactUs = () => {
   function handleSubmit(event) {
     event.preventDefault();
     if (
-      formData.Password !== formData.PasswordConfirm ||
       formData.FirstName === "" ||
       formData.LastName === "" ||
-      formData.Email === "" ||
-      formData.Password === ""
+      formData.Email === ""
     ) {
       console.log("Passwords do not match of sum filed is missing");
       notify_error();
@@ -73,8 +69,6 @@ export const FormContactUs = () => {
       FirstName: "",
       LastName: "",
       Email: "",
-      Password: "",
-      PasswordConfirm: "",
       Comments: "",
       JoinedNewsletter: "",
     });
