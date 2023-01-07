@@ -9,7 +9,7 @@ export const FormContactUs = () => {
     FirstName: "",
     LastName: "",
     Email: "",
-    Comments: "",
+    Message: "",
     JoinedNewsletter: true,
   });
 
@@ -68,7 +68,7 @@ export const FormContactUs = () => {
       FirstName: "",
       LastName: "",
       Email: "",
-      Comments: "",
+      Message: "",
       JoinedNewsletter: "",
     });
   }
@@ -117,9 +117,9 @@ export const FormContactUs = () => {
         </div>
         <textarea
           value={formData.Comments}
-          placeholder="Comments"
+          placeholder="Add Message"
           onChange={handleChange}
-          name="Comments"
+          name="Message"
         />
         <div className="form-group">
           <input

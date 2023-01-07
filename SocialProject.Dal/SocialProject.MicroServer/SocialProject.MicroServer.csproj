@@ -7,7 +7,7 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
     <PackageReference Include="RestSharp" Version="108.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-    <PackageReference Include="System.Text.Json" Version="7.0.1" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialProject.Entities\SocialProject.Entities.csproj" />

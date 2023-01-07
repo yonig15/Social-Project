@@ -10,7 +10,7 @@ namespace SocialProject.Dal
 {
     public class SqlQuery
     {
-        public static string ConnectionString = @"Integrated Security=SSPI;   Persist Security Info=False;    Initial Catalog=Northwind2;  Data Source=localhost\sqlexpress";
+        public static string ConnectionString = @"Integrated Security=SSPI;   Persist Security Info=False;    Initial Catalog=Social_Project;  Data Source=localhost\sqlexpress";
 
         public static DataTable ReadTableFormDB(string Sql_Query)
         {

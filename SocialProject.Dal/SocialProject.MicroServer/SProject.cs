@@ -47,9 +47,9 @@ namespace SocialProject.MicroServer
                     //return new OkObjectResult(responseMessage);
 
                 case "post":
-                    //M_ContactUs ContacUSForm = new M_ContactUs();
-                    //ContacUSForm = System.Text.Json.JsonSerializer.Deserialize<M_ContactUs>(req.Body);
-                    //MainManager.Instance.AllForms.SendContactUsFormToDB(ContacUSForm);
+                    M_ContactUs ContacUSForm = new M_ContactUs();
+                    ContacUSForm = System.Text.Json.JsonSerializer.Deserialize<M_ContactUs>(req.Body);
+                    MainManager.Instance.AllForms.SendContactUsFormToDB(ContacUSForm);
                     break;
 
                 case "update":
