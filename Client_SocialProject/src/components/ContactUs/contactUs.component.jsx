@@ -57,12 +57,11 @@ export const FormContactUs = () => {
       formData.LastName === "" ||
       formData.Email === ""
     ) {
-      console.log("Passwords do not match of sum filed is missing");
       notify_error();
       return;
     } else {
       handleAddData();
-      console.log("Successfully signed up");
+      console.log("Successfully send contactUs form");
       notify_success();
     }
     setFormData({

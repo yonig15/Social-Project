@@ -7,6 +7,7 @@ import { RollsStatus } from "./../../context/rollsStatus";
 
 export const NonProfitSidebar = () => {
   const { role } = useContext(RollsStatus);
+
   return (
     <div className="NonProfitSidebar--container">
       <ul className="NonProfitSidebar--menu">

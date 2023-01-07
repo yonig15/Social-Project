@@ -12,6 +12,7 @@ export const AllUserSidebar = () => {
   return (
     <>
       <GetRoleFromAuth0 />
+      {role === "" && <>you have a problem</>}
       {role === "Owner" && (
         <>
           <OwnerSidebar />
