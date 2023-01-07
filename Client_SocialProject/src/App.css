@@ -1,0 +1,32 @@
+.App--CancelAccessibility {
+  background-color: rgba(235, 202, 130, 0.274);
+}
+
+header {
+  grid-area: header;
+  background-color: rgb(253, 143, 143);
+}
+
+.App--AllUserSidebar {
+  grid-area: sidebar;
+}
+
+.App--Routes {
+  grid-area: main !important;
+}
+
+footer {
+  grid-area: footer;
+  background-color: rgb(253, 143, 143);
+}
+
+.App--CancelAccessibility,
+.App--Accessibility {
+  display: grid;
+  grid-template-rows: 50px auto 50px;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
