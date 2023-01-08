@@ -134,7 +134,7 @@ export const FormContactUs = () => {
           </label>
         </div>
         <div className="form-group">
-          <button className="form--submit btn btn-danger">Sign up</button>
+          <button className="form--submit btn btn-danger">Send</button>
           <ToastContainer />
         </div>
       </form>

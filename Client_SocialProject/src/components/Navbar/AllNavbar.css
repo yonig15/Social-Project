@@ -198,6 +198,7 @@ a {
 }
 .profile--name {
   margin-right: 60px;
+  text-shadow: 3px 3px 3px #ababab;
 }
 .img-profile {
   margin-left: 20px;
