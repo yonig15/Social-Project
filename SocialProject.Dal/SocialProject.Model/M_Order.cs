@@ -15,6 +15,5 @@ namespace SocialProject.Model
         public int Product_code { get; set; }
         public DateTime Order_Time { get; set; }
         public bool Is_Sent { get; set; }
-
     }
 }

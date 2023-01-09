@@ -14,7 +14,7 @@ namespace SocialProject.DataSql
         public void EnterContactUsFormToDB(M_ContactUs M_ContactUs)
         {
             string sqlQuery = "insert into Contact_Us values ('" + M_ContactUs.FirstName + "','" + M_ContactUs.LastName + "','" + M_ContactUs.Email + "','"+ M_ContactUs.Message+ "','" + M_ContactUs.JoinedNewsletter + "',getdate())";
-            SqlQuery.WriteToDB(sqlQuery);
+            SqlQuery.Write_ToDB(sqlQuery);
         }
     }
 }

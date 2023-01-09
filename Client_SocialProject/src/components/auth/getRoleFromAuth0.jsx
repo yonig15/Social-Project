@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { RollsStatus } from "./../../context/rollsStatus";
-import { getRolesData } from "./../../services/services";
+import { getRolesData } from "../../services/allGetServices";
 
 export const GetRoleFromAuth0 = (props) => {
   const { role, setRole } = useContext(RollsStatus);

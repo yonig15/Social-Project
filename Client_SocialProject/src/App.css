@@ -5,10 +5,17 @@
 header {
   grid-area: header;
   background-color: rgb(253, 143, 143);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .App--AllUserSidebar {
   grid-area: sidebar;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 220px;
 }
 
 .App--Routes {
@@ -18,12 +25,13 @@ header {
 footer {
   grid-area: footer;
   background-color: rgb(253, 143, 143);
+  height: max-content;
 }
 
 .App--CancelAccessibility,
 .App--Accessibility {
   display: grid;
-  grid-template-rows: 50px auto 50px;
+  grid-template-rows: 50px auto 50px !important;
   grid-template-columns: 220px 1fr;
   grid-template-areas:
     "header header"

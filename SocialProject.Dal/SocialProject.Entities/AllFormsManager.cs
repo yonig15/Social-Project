@@ -8,7 +8,7 @@ using SocialProject.DataSql;
 
 namespace SocialProject.Entities
 {
-    public class AllForms
+    public class AllFormsManager
     {
         public void SendContactUsFormToDB(M_ContactUs m_ContactUs)
         {

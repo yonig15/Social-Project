@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllForms.cs" />
+    <Compile Include="AllFormsManager.cs" />
     <Compile Include="MainManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocialProject.Dal\SocialProject.Dal.csproj">

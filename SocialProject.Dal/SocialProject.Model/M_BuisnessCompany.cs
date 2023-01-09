@@ -14,6 +14,6 @@ namespace SocialProject.Model
 
         public string Email { get; set; }
 
-        public string MyImage { get; set; }
+        public string Image { get; set; }
     }
 }

@@ -7,6 +7,8 @@ import { ActivistSidebar } from "./activistSidebar";
 import { GetRoleFromAuth0 } from "./../auth/getRoleFromAuth0";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { RegisterSidebar } from "./registerSidebar";
+import { getPending } from "../../services/allGetServices";
 
 export const AllUserSidebar = () => {
   const { role } = useContext(RollsStatus);
@@ -29,16 +31,19 @@ export const AllUserSidebar = () => {
     handelPending();
   }, []);
 
+  const handelNavigate = () => {
+    navigate("/register");
+  };
+
   return (
     <>
       <GetRoleFromAuth0 />
       {role === "" && !pending && (
         <>
-          <h1>
-            Please register on the site first in order to perform actions as our
-            user
-          </h1>
-          {navigate("/Register")}
+          <RegisterSidebar />
+          <button onClick={handelNavigate} className="btn btn-success">
+            ffefff
+          </button>
         </>
       )}
       {role === "" && pending && (

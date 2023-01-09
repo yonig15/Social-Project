@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 
-import { addFormToContactUs } from "../../services/allPostServices";
+import { addFormRole } from "../../services/allPostServices";
 import { ToastContainer, toast } from "react-toastify";
-import "./styleForm.css";
+import "./styleRegister.css";
 
-export const FormContactUs = () => {
-  const [formData, setFormData] = useState({
-    FirstName: "",
-    LastName: "",
+export const FormCompany = () => {
+  const [formDataCompany, setFormDataCompany] = useState({
+    Name: "",
     Email: "",
-    Message: "",
-    JoinedNewsletter: true,
+    Image: "",
   });
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setFormData((prevFormData) => ({
+    setFormDataCompany((prevFormData) => ({
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value,
     }));
@@ -46,30 +44,28 @@ export const FormContactUs = () => {
     });
 
   const handleAddData = async () => {
-    let json = formData;
-    await addFormToContactUs(json);
+    let json = formDataCompany;
+    await addFormRole(json);
   };
 
   function handleSubmit(event) {
     event.preventDefault();
     if (
-      formData.FirstName === "" ||
-      formData.LastName === "" ||
-      formData.Email === ""
+      formDataCompany.Name === "" ||
+      formDataCompany.Email === "" ||
+      formDataCompany.Image === ""
     ) {
       notify_error();
       return;
     } else {
       handleAddData();
-      console.log("Successfully send contactUs form");
+      console.log("Successfully send form request");
       notify_success();
     }
-    setFormData({
-      FirstName: "",
-      LastName: "",
+    setFormDataCompany({
+      Name: "",
       Email: "",
-      Message: "",
-      JoinedNewsletter: "",
+      Image: "",
     });
   }
 
@@ -77,29 +73,16 @@ export const FormContactUs = () => {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="FirstName" className="frm-lbl">
-            FirstName
+          <label htmlFor="Name" className="frm-lbl">
+            Name
           </label>
           <input
             type="text"
-            placeholder="Enter your FirstName"
+            placeholder="Enter your Name"
             className="form-control"
-            name="FirstName"
+            name="Name"
             onChange={handleChange}
-            value={formData.FirstName}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="LastName" className="frm-lbl">
-            LastName
-          </label>
-          <input
-            type="text"
-            placeholder="Enter your LastName"
-            className="form-control"
-            name="LastName"
-            onChange={handleChange}
-            value={formData.LastName}
+            value={formDataCompany.Name}
           />
         </div>
         <div className="form-group">
@@ -112,27 +95,15 @@ export const FormContactUs = () => {
             className="form-control"
             name="Email"
             onChange={handleChange}
-            value={formData.Email}
+            value={formDataCompany.Email}
           />
         </div>
         <textarea
-          value={formData.Message}
-          placeholder="Add Message"
+          value={formDataCompany.Image}
+          placeholder="Add Image"
           onChange={handleChange}
-          name="Message"
+          name="Image"
         />
-        <div className="form-group">
-          <input
-            id="okayToEmail"
-            type="checkbox"
-            name="JoinedNewsletter"
-            onChange={handleChange}
-            checked={formData.JoinedNewsletter}
-          />
-          <label htmlFor="okayToEmail" className="frm-lbl">
-            I want to join the newsletter
-          </label>
-        </div>
         <div className="form-group">
           <button className="form--submit btn btn-danger">Send</button>
           <ToastContainer />

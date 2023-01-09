@@ -3,11 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeContext } from "./context/theme.context";
 import { RollsStatus } from "./context/rollsStatus";
 import { useAuth0 } from "@auth0/auth0-react";
-import { AboutPage, ContactUsPage, HomePage } from "./pages/page.index";
 import "./App.css";
 import { TopNavbar } from "./components/Navbar/topNavbar.component";
 import { BottomNavbar } from "./components/Navbar/bottomNavbar.component";
 import { AllUserSidebar } from "./components/Navbar/allUserSidebar";
+import {
+  AboutPage,
+  ContactUsPage,
+  HomePage,
+  RegisterPage,
+  RegisterTypeFormPage,
+} from "./pages/page.index";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -34,6 +40,11 @@ function App() {
                   <Route path="/" element={<HomePage />}></Route>
                   <Route path="/about" element={<AboutPage />}></Route>
                   <Route path="/contactUs" element={<ContactUsPage />}></Route>
+                  <Route path="/register" element={<RegisterPage />}></Route>
+                  <Route
+                    path="registerTypeForm"
+                    element={<RegisterTypeFormPage />}
+                  ></Route>
                 </Routes>
               </div>
               <footer>
@@ -63,6 +74,11 @@ function App() {
                   <Route path="/" element={<HomePage />}></Route>
                   <Route path="/about" element={<AboutPage />}></Route>
                   <Route path="/contactUs" element={<ContactUsPage />}></Route>
+                  <Route path="/register" element={<RegisterPage />}></Route>
+                  <Route
+                    path="registerTypeForm"
+                    element={<RegisterTypeFormPage />}
+                  ></Route>
                 </Routes>
               </div>
               <footer>

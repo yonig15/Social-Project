@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 
-import { addFormToContactUs } from "../../services/allPostServices";
+import { addFormRole } from "../../services/allPostServices";
 import { ToastContainer, toast } from "react-toastify";
-import "./styleForm.css";
+import "./styleRegister.css";
 
-export const FormContactUs = () => {
-  const [formData, setFormData] = useState({
+export const FormSocialActivist = () => {
+  const [formData_SocialActivist, setFormData_SocialActivist] = useState({
     FirstName: "",
     LastName: "",
     Email: "",
-    Message: "",
-    JoinedNewsletter: true,
+    Address: "",
+    Phone_Number: "",
+    Image: "",
   });
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    setFormData((prevFormData) => ({
+    setFormData_SocialActivist((prevFormData) => ({
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value,
     }));
@@ -47,15 +48,17 @@ export const FormContactUs = () => {
 
   const handleAddData = async () => {
     let json = formData;
-    await addFormToContactUs(json);
+    await addFormRole(json);
   };
 
   function handleSubmit(event) {
     event.preventDefault();
     if (
-      formData.FirstName === "" ||
-      formData.LastName === "" ||
-      formData.Email === ""
+      formData_SocialActivist.FirstName === "" ||
+      formData_SocialActivist.LastName === "" ||
+      formData_SocialActivist.Email === "" ||
+      formData_SocialActivist.Phone_Number === "" ||
+      formData_SocialActivist.Image === ""
     ) {
       notify_error();
       return;
@@ -64,12 +67,13 @@ export const FormContactUs = () => {
       console.log("Successfully send contactUs form");
       notify_success();
     }
-    setFormData({
+    setFormData_SocialActivist({
       FirstName: "",
       LastName: "",
       Email: "",
-      Message: "",
-      JoinedNewsletter: "",
+      Address: "",
+      Phone_Number: "",
+      Image: "",
     });
   }
 
@@ -86,7 +90,7 @@ export const FormContactUs = () => {
             className="form-control"
             name="FirstName"
             onChange={handleChange}
-            value={formData.FirstName}
+            value={formData_SocialActivist.FirstName}
           />
         </div>
         <div className="form-group">
@@ -99,7 +103,7 @@ export const FormContactUs = () => {
             className="form-control"
             name="LastName"
             onChange={handleChange}
-            value={formData.LastName}
+            value={formData_SocialActivist.LastName}
           />
         </div>
         <div className="form-group">
@@ -108,31 +112,45 @@ export const FormContactUs = () => {
           </label>
           <input
             type="email"
-            placeholder="Email address"
+            placeholder="Enter Email address"
             className="form-control"
             name="Email"
             onChange={handleChange}
-            value={formData.Email}
+            value={formData_SocialActivist.Email}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Address" className="frm-lbl">
+            Address
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your Address"
+            className="form-control"
+            name="Address"
+            onChange={handleChange}
+            value={formData_SocialActivist.Address}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Phone_Number" className="frm-lbl">
+            Phone Number
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your Phone Number"
+            className="form-control"
+            name="Phone_Number"
+            onChange={handleChange}
+            value={formData_SocialActivist.Address}
           />
         </div>
         <textarea
-          value={formData.Message}
-          placeholder="Add Message"
+          value={formData_SocialActivist.Image}
+          placeholder="Add Image"
           onChange={handleChange}
-          name="Message"
+          name="Image"
         />
-        <div className="form-group">
-          <input
-            id="okayToEmail"
-            type="checkbox"
-            name="JoinedNewsletter"
-            onChange={handleChange}
-            checked={formData.JoinedNewsletter}
-          />
-          <label htmlFor="okayToEmail" className="frm-lbl">
-            I want to join the newsletter
-          </label>
-        </div>
         <div className="form-group">
           <button className="form--submit btn btn-danger">Send</button>
           <ToastContainer />

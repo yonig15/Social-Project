@@ -1,14 +1,3 @@
-.TopNavbar--container {
-  position: sticky;
-  top: 0;
-  height: 10vh;
-}
-
-.BottomNavbar--container {
-  position: sticky;
-  bottom: 0;
-  height: 10vh;
-}
 .BottomNavbar--container li img,
 .TopNavbar--container li img {
   width: 40px;
@@ -154,7 +143,8 @@ a {
 
 .OwnerSidebar--container,
 .NonProfitSidebar--container,
-.CompanySidebar--container {
+.CompanySidebar--container,
+.RegisterSidebar--container {
   position: sticky;
   left: 0;
   background-color: rgb(193, 240, 224);
@@ -181,6 +171,7 @@ a {
 .NonProfitSidebar--TitleLbl,
 .CompanySidebar--TitleLbl,
 .ActivistSidebar--TitleLbl,
+.RegisterSidebar--TitleLbl,
 .profile--name,
 .profile--email {
   display: flex !important;
@@ -191,6 +182,10 @@ a {
   font-weight: bold;
   font-style: italic;
   margin-right: 40px;
+}
+
+.RegisterSidebar--TitleLbl {
+  font-size: 20px;
 }
 
 .profile--email {
@@ -207,7 +202,8 @@ a {
 .OwnerSidebar--lbl,
 .NonProfitSidebar--lbl,
 .CompanySidebar--lbl,
-.ActivistSidebar--lbl {
+.ActivistSidebar--lbl,
+.RegisterSidebar--lbl {
   color: black;
   font-family: cursive;
 }
