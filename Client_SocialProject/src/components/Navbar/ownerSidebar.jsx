@@ -15,8 +15,7 @@ export const OwnerSidebar = () => {
           <label className="OwnerSidebar--TitleLbl frm-lbl">{role}</label>
         </li>
         <li>
-          {/* צריך לשלוח לדף של דוח קמפיינים */}
-          <Link to="/contactUs">
+          <Link to="/campaignsTable">
             <label className="OwnerSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
               Campaigns report
@@ -24,8 +23,7 @@ export const OwnerSidebar = () => {
           </Link>
         </li>
         <li>
-          {/* צריך לינק לדף של המשתמשים */}
-          <Link to="/contactUs">
+          <Link to="/allUsersTable">
             <label className="OwnerSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
               Users Info
@@ -33,8 +31,7 @@ export const OwnerSidebar = () => {
           </Link>
         </li>
         <li>
-          {/* צריך לינק לדף של הציוצים */}
-          <Link to="/contactUs">
+          <Link to="/twitterInfo">
             <label className="OwnerSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
               twits Info
@@ -42,8 +39,7 @@ export const OwnerSidebar = () => {
           </Link>
         </li>
         <li>
-          {/* צריך לינק לדף של אישור בקשות הרשמה לאתר */}
-          <Link to="/contactUs">
+          <Link to="/PendingRegistrationList">
             <label className="OwnerSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
               Pending registration confirmation
@@ -51,7 +47,6 @@ export const OwnerSidebar = () => {
           </Link>
         </li>
         <br />
-
         <li>
           <Profile />
         </li>

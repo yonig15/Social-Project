@@ -15,8 +15,7 @@ export const NonProfitSidebar = () => {
           <label className="NonProfitSidebar--TitleLbl frm-lbl">{role}</label>
         </li>
         <li>
-          {/* צריך לינק לדף של המשתמשים */}
-          <Link to="/contactUs">
+          <Link to="/edit-Campaigns">
             <label className="NonProfitSidebar--lbl frm-lbl">
               <AddTwoToneIcon />
               Creating a campaign
@@ -24,11 +23,18 @@ export const NonProfitSidebar = () => {
           </Link>
         </li>
         <li>
-          {/* צריך לשלוח לדף של דוח קמפיינים */}
-          <Link to="/contactUs">
+          <Link to="/campaignsTableNPO">
             <label className="NonProfitSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
               Campaigns report
+            </label>
+          </Link>
+        </li>
+        <li>
+          <Link to="/campaignsCardNPO">
+            <label className="NonProfitSidebar--lbl frm-lbl">
+              <InventoryTwoToneIcon />
+              My Campaigns
             </label>
           </Link>
         </li>

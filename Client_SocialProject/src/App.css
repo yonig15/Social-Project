@@ -1,10 +1,13 @@
 .App--CancelAccessibility {
-  background-color: rgba(235, 202, 130, 0.274);
+  background-color: rgba(130, 141, 235, 0.274);
+}
+.App--Accessibility {
+  background-color: #f6f6c9;
 }
 
 header {
   grid-area: header;
-  background-color: rgb(253, 143, 143);
+  background-color: #bad1c2;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -12,10 +15,18 @@ header {
 
 .App--AllUserSidebar {
   grid-area: sidebar;
-  position: fixed;
+  background-color: #a3bb7e;
+  position: sticky;
+  left: 0;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 2%;
+  /* background-color: #aabd8c; */
+  /* position: fixed;
   top: 40px;
   left: 0;
-  width: 220px;
+  width: 220px; */
 }
 
 .App--Routes {
@@ -24,7 +35,7 @@ header {
 
 footer {
   grid-area: footer;
-  background-color: rgb(253, 143, 143);
+  background-color: #153462;
   height: max-content;
 }
 

@@ -46,7 +46,7 @@ export const FormNPO = () => {
 
   const handleAddData = async () => {
     let json = formDataNPO;
-    await addFormRole(json);
+    await addFormRole(json, "-NPO");
   };
 
   function handleSubmit(event) {
@@ -64,7 +64,7 @@ export const FormNPO = () => {
       console.log("Successfully send form request");
       notify_success();
     }
-    setFormDataCompany({
+    setFormDataNPO({
       Name: "",
       Email: "",
       Image: "",
@@ -75,6 +75,7 @@ export const FormNPO = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <h1>Non Profit Organization form</h1>
         <div className="form-group">
           <label htmlFor="Name" className="frm-lbl">
             Name
@@ -111,7 +112,7 @@ export const FormNPO = () => {
             className="form-control"
             name="Website_URL"
             onChange={handleChange}
-            value={formDataNPO.Email}
+            value={formDataNPO.Website_URL}
           />
         </div>
         <textarea

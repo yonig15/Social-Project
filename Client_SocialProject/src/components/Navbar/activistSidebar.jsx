@@ -1,24 +1,31 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import InventoryTwoToneIcon from "@mui/icons-material/InventoryTwoTone";
-import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
 import { Profile } from "./../auth/profile";
 import { RollsStatus } from "./../../context/rollsStatus";
+import { UserDataContext } from "./../../context/userData";
 
 export const ActivistSidebar = () => {
+  const { userInfo } = useContext(UserDataContext);
   const { role } = useContext(RollsStatus);
+
   return (
     <div className="ActivistSidebar--container">
       <ul className="ActivistSidebar--menu">
         <li>
           <label className="ActivistSidebar--TitleLbl frm-lbl">{role}</label>
         </li>
+        <br />
         <li>
-          {/* צריך לינק לדף של המשתמשים */}
-          <Link to="/contactUs">
+          <label className="ActivistSidebar--lbl frm-lbl">
+            Money Balance:{userInfo.Money_Status}$
+          </label>
+        </li>
+        <li>
+          <Link to="/campaignsCardNPO">
             <label className="ActivistSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
-              Product report by campaign
+              Donate for campaign
             </label>
           </Link>
         </li>

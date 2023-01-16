@@ -14,11 +14,18 @@ export const CompanySidebar = () => {
           <label className="CompanySidebar--TitleLbl frm-lbl">{role}</label>
         </li>
         <li>
-          {/* צריך לינק לדף של המשתמשים */}
-          <Link to="/contactUs">
+          <Link to="/campaignsCardNPO">
             <label className="CompanySidebar--lbl frm-lbl">
               <AddTwoToneIcon />
               Creating a product
+            </label>
+          </Link>
+        </li>
+        <li>
+          <Link to="/productTable">
+            <label className="CompanySidebar--lbl frm-lbl">
+              <AddTwoToneIcon />
+              My product
             </label>
           </Link>
         </li>

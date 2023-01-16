@@ -13,5 +13,6 @@ namespace SocialProject.Model
         public string Email { get; set; }
         public string Website_URL { get; set; }
         public string Image { get; set;}
+        public DateTime Register_Time { get; set; }
     }
 }

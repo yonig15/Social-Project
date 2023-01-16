@@ -30,6 +30,10 @@ textarea {
   margin-bottom: 10px;
 }
 
+.form-container h1 {
+  font-family: cursive;
+}
+
 @media only screen and (max-width: 1000px) {
   form {
     margin-left: 60px;
@@ -45,6 +49,9 @@ textarea {
   }
   label {
     display: none;
+  }
+  .form-container h1 {
+    font-size: medium;
   }
 }
 
@@ -63,5 +70,8 @@ textarea {
   }
   label {
     display: none;
+  }
+  .form-container h1 {
+    font-size: smaller;
   }
 }

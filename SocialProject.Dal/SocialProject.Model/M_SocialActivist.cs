@@ -16,5 +16,6 @@ namespace SocialProject.Model
         public string Phone_Number { get; set; }
         public decimal Money_Status { get; set; }
         public string Image { get; set; }
+        public DateTime Register_Time { get; set; }
     }
 }

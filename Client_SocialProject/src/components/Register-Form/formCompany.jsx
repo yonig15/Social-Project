@@ -11,14 +11,6 @@ export const FormCompany = () => {
     Image: "",
   });
 
-  function handleChange(event) {
-    const { name, value, type, checked } = event.target;
-    setFormDataCompany((prevFormData) => ({
-      ...prevFormData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  }
-
   const notify_success = () =>
     toast.success("🦄 we get your message!", {
       position: "top-left",
@@ -43,9 +35,17 @@ export const FormCompany = () => {
       theme: "dark",
     });
 
+  function handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    setFormDataCompany((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  }
+
   const handleAddData = async () => {
     let json = formDataCompany;
-    await addFormRole(json);
+    await addFormRole(json, "-Company");
   };
 
   function handleSubmit(event) {
@@ -72,6 +72,7 @@ export const FormCompany = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <h1>Business Companies form</h1>
         <div className="form-group">
           <label htmlFor="Name" className="frm-lbl">
             Name

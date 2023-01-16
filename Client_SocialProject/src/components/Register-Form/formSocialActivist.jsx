@@ -47,8 +47,8 @@ export const FormSocialActivist = () => {
     });
 
   const handleAddData = async () => {
-    let json = formData;
-    await addFormRole(json);
+    let json = formData_SocialActivist;
+    await addFormRole(json, "-SocialActivist");
   };
 
   function handleSubmit(event) {
@@ -80,6 +80,7 @@ export const FormSocialActivist = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <h1>Social Activist form</h1>
         <div className="form-group">
           <label htmlFor="FirstName" className="frm-lbl">
             FirstName
@@ -137,12 +138,12 @@ export const FormSocialActivist = () => {
             Phone Number
           </label>
           <input
-            type="text"
+            type="tel"
             placeholder="Enter your Phone Number"
             className="form-control"
             name="Phone_Number"
             onChange={handleChange}
-            value={formData_SocialActivist.Address}
+            value={formData_SocialActivist.Phone_Number}
           />
         </div>
         <textarea

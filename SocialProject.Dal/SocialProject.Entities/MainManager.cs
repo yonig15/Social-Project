@@ -8,11 +8,11 @@ namespace SocialProject.Entities
 {
     public class MainManager
     {
-        public AllFormsManager AllForms;
+        public AllFormsManager AllFormsManager;
         public UsersManager UsersManager;
         private MainManager()
         {
-            AllForms=new AllFormsManager();
+            AllFormsManager = new AllFormsManager();
             UsersManager = new UsersManager();
         }
 

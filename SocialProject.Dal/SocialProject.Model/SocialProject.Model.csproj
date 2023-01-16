@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="M_BuisnessCompany.cs" />
+    <Compile Include="M_BusinessCompany.cs" />
     <Compile Include="M_Campaign.cs" />
     <Compile Include="M_ContactUs.cs" />
     <Compile Include="M_NonProfitOrganization.cs" />
     <Compile Include="M_Order.cs" />
     <Compile Include="M_Product.cs" />
-    <Compile Include="M_RegisterToApp.cs" />
+    <Compile Include="M_Register_Applications.cs" />
     <Compile Include="M_SocialActivist.cs" />
     <Compile Include="M_Tweets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

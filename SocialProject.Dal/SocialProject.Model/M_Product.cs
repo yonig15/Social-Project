@@ -10,7 +10,7 @@ namespace SocialProject.Model
     {
         public int Code { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public float Price { get; set; }
         public string Description { get; set; }
         public int Units_In_Stock { get; set; }
         public int BC_code { get; set; }

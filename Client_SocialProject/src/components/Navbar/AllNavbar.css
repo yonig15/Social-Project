@@ -35,12 +35,22 @@
   margin-top: 6px;
 }
 
-ul {
-  list-style: none;
-}
-
 a {
   color: white !important;
+  height: 35px;
+}
+
+.frm-lbl {
+  margin-top: 6px;
+  height: 35px;
+}
+
+.frm-lbl:hover {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
 }
 
 .label--TopNavbar:hover,
@@ -107,6 +117,7 @@ a {
 
 .btn-profile--background {
   margin-top: 3px;
+  height: inherit;
   background-color: bisque;
   padding: 5px;
   border-radius: 20px;
@@ -116,7 +127,6 @@ a {
 
 .Accessibility {
   margin-top: 6px;
-  color: white;
 }
 
 .Access:hover {
@@ -131,27 +141,20 @@ a {
 .CancelAccessibility svg {
   color: black;
 }
-.frm-lbl {
-  margin-top: 6px;
-}
-
-.frm-lbl:hover {
-  cursor: pointer;
-}
 
 /* ---------------------------------All Users css---------------------------------- */
 
-.OwnerSidebar--container,
+/* .OwnerSidebar--container,
 .NonProfitSidebar--container,
+.ActivistSidebar--container,
 .CompanySidebar--container,
 .RegisterSidebar--container {
   position: sticky;
   left: 0;
-  background-color: rgb(193, 240, 224);
   width: 100%;
   margin-top: 20px;
   border-radius: 2%;
-}
+} */
 
 @media only screen and (max-width: 1000px) {
   .OwnerSidebar--menu,
@@ -176,12 +179,13 @@ a {
 .profile--email {
   display: flex !important;
   justify-content: center !important;
-  font-family: "Sofia", sans-serif;
+  font-family: cursive;
   font-size: 30px;
   text-shadow: 3px 3px 3px #ababab;
   font-weight: bold;
   font-style: italic;
   margin-right: 40px;
+  color: rgb(234, 249, 220);
 }
 
 .RegisterSidebar--TitleLbl {
@@ -189,9 +193,10 @@ a {
 }
 
 .profile--email {
-  font-size: 20px;
+  font-size: 15px;
 }
 .profile--name {
+  font-size: 23px;
   margin-right: 60px;
   text-shadow: 3px 3px 3px #ababab;
 }
@@ -204,6 +209,6 @@ a {
 .CompanySidebar--lbl,
 .ActivistSidebar--lbl,
 .RegisterSidebar--lbl {
-  color: black;
+  color: rgb(234, 249, 220);
   font-family: cursive;
 }
