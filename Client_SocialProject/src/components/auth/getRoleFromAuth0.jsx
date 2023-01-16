@@ -1,10 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { RollsStatus } from "./../../context/rollsStatus";
-import { getRolesData } from "../../services/allGetServices";
+import { getRolesData, getUserInfoData } from "../../services/allGetServices";
+import { UserDataContext } from "./../../context/userData";
 
 export const GetRoleFromAuth0 = (props) => {
   const { role, setRole } = useContext(RollsStatus);
+  const { userInfo, setUserInfo } = useContext(UserDataContext);
   const { user } = useAuth0();
 
   const handleRoles = async () => {
@@ -21,6 +23,24 @@ export const GetRoleFromAuth0 = (props) => {
   useEffect(() => {
     handleRoles();
   }, []);
+
+  const handleUserInfo = async () => {
+    if (role === "N.P.O" || role === "company" || role === "Activist") {
+      let userInfo = await getUserInfoData(user.email, role);
+      let userInfoFullData = userInfo[0];
+      console.log(3, userInfoFullData);
+      setUserInfo(userInfoFullData);
+    }
+  };
+
+  useEffect(() => {
+    handleUserInfo();
+  }, [role]);
+
+  useEffect(() => {
+    console.log(4, userInfo);
+    console.log(2, role);
+  }, [userInfo]);
 
   // return <div>{role}</div>;
 };
