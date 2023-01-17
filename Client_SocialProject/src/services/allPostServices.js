@@ -33,3 +33,11 @@ export const sendToOrderDetails = async (Order, UnitsInStock) => {
     Order
   );
 };
+
+export const UpdateIs_send = async (Is_sendToUpdate) => {
+  await axios.post(`${ServerAddress}/update-Is_send`, Is_sendToUpdate);
+};
+
+export const AddTweetToDB = async (Tweet, SA_code) => {
+  await axios.post(`${ServerAddress}/Post-tweet/${SA_code}`, Tweet);
+};

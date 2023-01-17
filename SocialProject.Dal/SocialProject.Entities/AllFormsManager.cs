@@ -63,5 +63,15 @@ namespace SocialProject.Entities
             dS_Form.EnterOrderDetailsFormToDB(m_Order, UnitsInStock);
         }
 
+
+        //*********************************Twitter**************
+
+        public void SendTweetToDB(M_Campaign m_Campaign, string SA_code)
+        {
+            DS_Forms dS_Form = new DS_Forms();
+            dS_Form.EnterTweetToDB(m_Campaign, SA_code);
+        }
+
+        
     }
 }

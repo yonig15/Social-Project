@@ -30,11 +30,10 @@ export const ActivistSidebar = () => {
           </Link>
         </li>
         <li>
-          {/* צריך לשלוח לדף של דוח קמפיינים */}
-          <Link to="/contactUs">
+          <Link to="/myProductTable">
             <label className="ActivistSidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
-              Report of products I donated
+              products I donated
             </label>
           </Link>
         </li>

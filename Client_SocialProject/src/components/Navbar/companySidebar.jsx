@@ -13,6 +13,7 @@ export const CompanySidebar = () => {
         <li>
           <label className="CompanySidebar--TitleLbl frm-lbl">{role}</label>
         </li>
+        <br />
         <li>
           <Link to="/campaignsCardNPO">
             <label className="CompanySidebar--lbl frm-lbl">
@@ -30,8 +31,7 @@ export const CompanySidebar = () => {
           </Link>
         </li>
         <li>
-          {/* צריך לשלוח לדף של דוח קמפיינים */}
-          <Link to="/contactUs">
+          <Link to="/orderTable">
             <label className="CompanySidebar--lbl frm-lbl">
               <InventoryTwoToneIcon />
               Order Report

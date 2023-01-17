@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllCompany_Rows } from "./../../../services/allGetServices";
+import "../styleOwner.css";
 
 export const CompanyRow = () => {
   const [AllCompanyRows, setAllCompanyRows] = useState([]);
@@ -17,12 +18,14 @@ export const CompanyRow = () => {
     <>
       {AllCompanyRows.length > 0 ? (
         AllCompanyRows.map((item) => {
-          let { Name, Email, Image_URL, Register_Time } = item;
+          let { Name, Email, Image, Register_Time } = item;
           return (
             <tr>
               <td>{Name}</td>
               <td>{Email}</td>
-              <td>{Image_URL}</td>
+              <td className="td--img">
+                <img src={Image} alt="" />
+              </td>
               <td>{Register_Time}</td>
             </tr>
           );

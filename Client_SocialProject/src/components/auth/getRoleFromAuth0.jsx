@@ -28,7 +28,7 @@ export const GetRoleFromAuth0 = (props) => {
     if (role === "N.P.O" || role === "company" || role === "Activist") {
       let userInfo = await getUserInfoData(user.email, role);
       let userInfoFullData = userInfo[0];
-      console.log(3, userInfoFullData);
+      // console.log(3, userInfoFullData);
       setUserInfo(userInfoFullData);
     }
   };
@@ -38,8 +38,8 @@ export const GetRoleFromAuth0 = (props) => {
   }, [role]);
 
   useEffect(() => {
-    console.log(4, userInfo);
-    console.log(2, role);
+    // console.log(4, userInfo);
+    // console.log(2, role);
   }, [userInfo]);
 
   // return <div>{role}</div>;

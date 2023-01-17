@@ -12,6 +12,7 @@ using RestSharp;
 using SocialProject.Model;
 using SocialProject.Entities;
 using Microsoft.VisualBasic;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SocialProject.MicroServer
 {
@@ -109,17 +110,29 @@ namespace SocialProject.MicroServer
 
             case "get-ProductListForActivist":
 
-                MainManager.Instance.UsersManager.ShowProductListForActivistFromDB(value);
-                responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getProductListForActivist);
-                return new OkObjectResult(responseMessage);
+                 MainManager.Instance.UsersManager.ShowProductListForActivistFromDB(value);
+                 responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getProductListForActivist);
+                 return new OkObjectResult(responseMessage);
 
-            case "get-UpdateMoneyStatus":
+            case "get-UpdateMoneyStatus":          
 
-                MainManager.Instance.UsersManager.ShowNewMoneyStatusForActivistFromDB(value, value2);
-                responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getNewMoneyStatusForActivist);
-                return new OkObjectResult(responseMessage);
+                 MainManager.Instance.UsersManager.ShowNewMoneyStatusForActivistFromDB(value, value2);
+                 responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getNewMoneyStatusForActivist);
+                 return new OkObjectResult(responseMessage);
 
-            case "post-ContactUs":
+            case "get-AllMyProduct":                  
+
+                 MainManager.Instance.UsersManager.ShowAllMyProductForActivistFromDB(value);
+                 responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getAllMyProductForActivist);
+                 return new OkObjectResult(responseMessage);
+
+            case "get-OrderDetail":
+
+                 MainManager.Instance.UsersManager.ShowOrderDetailForCompanyFromDB(value);
+                 responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getOrderDetail);
+                 return new OkObjectResult(responseMessage);
+
+            case "post-ContactUs":              
 
                  M_ContactUs ContacUSForm = new M_ContactUs();
                  ContacUSForm = System.Text.Json.JsonSerializer.Deserialize<M_ContactUs>(req.Body);
@@ -162,6 +175,18 @@ namespace SocialProject.MicroServer
                  MainManager.Instance.UsersManager.UpdateIs_ActiveInDB(Is_ActiveUpdate);
                  break;
 
+             case "update-Is_send":
+                 requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                 M_Order Is_sendUpdate = System.Text.Json.JsonSerializer.Deserialize<M_Order>(requestBody);
+                 MainManager.Instance.UsersManager.UpdateIs_sendInDB(Is_sendUpdate);
+                 break;
+
+             case "update-AddMoneyStatus":
+
+                    MainManager.Instance.UsersManager.UpdateMoneyStatusInDB(value);
+                    responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getOrderDetail);
+                    return new OkObjectResult(responseMessage);
+
              case "post-AddOrEditCampaigns":
                  if(value == "Add")
                  {
@@ -193,8 +218,15 @@ namespace SocialProject.MicroServer
                      m_Product = System.Text.Json.JsonSerializer.Deserialize<M_Product>(req.Body);
                      MainManager.Instance.AllFormsManager.SendEditProductForm_ToDB(m_Product);
                      break;
-                 }
-                 break;    
+                    }
+                 break;
+
+             case "Post-tweet":
+
+                 M_Campaign m_Campaign1 = new M_Campaign();
+                 m_Campaign1 = System.Text.Json.JsonSerializer.Deserialize<M_Campaign>(req.Body);
+                 MainManager.Instance.AllFormsManager.SendTweetToDB(m_Campaign1, value);
+                 break;
 
              case "delete-CompanyProduct":
 

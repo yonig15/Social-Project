@@ -126,8 +126,22 @@ namespace SocialProject.Entities
             dS_UsersQ.DeleteProductQuery(productCode);
         }
 
-        //*************************************************************** Activist ***********************************
+        public DataTable getOrderDetail = new DataTable();
+        public void ShowOrderDetailForCompanyFromDB(string BC_code)
+        {
+            DS_UsersQ dS_UsersQ = new DS_UsersQ();
+            getOrderDetail = dS_UsersQ.Send_getOrderDetailQuery(BC_code);
+        }
+
+        public void UpdateIs_sendInDB(M_Order m_Order)
+        {
+            DS_UsersQ dS_UsersQ = new DS_UsersQ();
+            dS_UsersQ.Is_sendForOrderQuery(m_Order);
+        }
+
         
+        //*************************************************************** Activist ***********************************
+
         public DataTable getProductListForActivist = new DataTable();
         public void ShowProductListForActivistFromDB(string Campaign_code)
         {
@@ -142,8 +156,21 @@ namespace SocialProject.Entities
             getNewMoneyStatusForActivist = dS_UsersQ.Send_getNEWMoneyStatusForActivistQuery(NEWMoneyStatus, SA_Code);
         }
 
+        public DataTable getAllMyProductForActivist = new DataTable();
+        public void ShowAllMyProductForActivistFromDB(string SA_code)
+        {
+            DS_UsersQ dS_UsersQ = new DS_UsersQ();
+            getAllMyProductForActivist = dS_UsersQ.Send_getAllMyProductForActivistQuery(SA_code);
+        }
 
-        
+
+        public DataTable getMoneyStatusForActivist = new DataTable();
+        public void UpdateMoneyStatusInDB(string userInfoCode)
+        {
+            DS_UsersQ dS_UsersQ = new DS_UsersQ();
+            getMoneyStatusForActivist = dS_UsersQ.MoneyByTwitterQuery(userInfoCode);
+        }
+
     }
 
 }

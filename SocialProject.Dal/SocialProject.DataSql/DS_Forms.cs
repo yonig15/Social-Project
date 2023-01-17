@@ -62,7 +62,7 @@ namespace SocialProject.DataSql
         }
         public void EnterEditProductFormToDB(M_Product m_Product)
         {
-            string sqlQuery = "update Campaigns set Name = '" + m_Product.Name + "', Price = '" + m_Product.Price + "', Description = '" + m_Product.Description + "', Units_In_Stock = '" + m_Product.Units_In_Stock + "',BC_code = '" + m_Product.BC_code + "', Campaign_code = '" + m_Product.Campaign_code + "', Image = '" + m_Product.Image + "' where Code = " + m_Product.Code;
+            string sqlQuery = "update Products set Name = '" + m_Product.Name + "', Price = '" + m_Product.Price + "', Description = '" + m_Product.Description + "', Units_In_Stock = '" + m_Product.Units_In_Stock + "',BC_code = '" + m_Product.BC_code + "', Campaign_code = '" + m_Product.Campaign_code + "', Image = '" + m_Product.Image + "' where Code = " + m_Product.Code;
             SqlQuery.Write_ToDB(sqlQuery);
         }
 
@@ -73,6 +73,14 @@ namespace SocialProject.DataSql
             string sqlQuery = "insert into Orders values ('"+ m_Order.SA_code + "', '"+ m_Order.BC_code + "', '"+ m_Order.Campaign_code + "', '"+ m_Order.Product_code + "',"+ UnitsInStock + ", getdate(), 0)  update Products set Units_In_Stock = Units_In_Stock - "+UnitsInStock+"  where Code = " + m_Order.Product_code;
             SqlQuery.Write_ToDB(sqlQuery);
         }
+
+        public void EnterTweetToDB(M_Campaign m_Campaign, string SA_code)
+        {
+            string sqlQuery = "insert into Tweets values('" + SA_code + "','" + m_Campaign.Code + "','" + m_Campaign.HashTag + "','" + m_Campaign.Landing_Page_URL + "','" + m_Campaign.Description + "', getdate())";
+            SqlQuery.Write_ToDB(sqlQuery);
+        }
+
+        
     }
 }
 

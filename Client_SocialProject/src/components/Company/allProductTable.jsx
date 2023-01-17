@@ -128,7 +128,7 @@ export const ProductParCompanyTable = () => {
   const handleDeleteProduct = async (productId) => {
     setExpand(!expand);
     await DeleteProduct(productId);
-    getProductDB();
+    getProductForCompanyDB();
   };
 
   return (

@@ -12,7 +12,7 @@ export const getRolesData = async (userId) => {
 };
 
 export const getUserInfoData = async (email, role) => {
-  console.log(1, email, role);
+  // console.log(1, email, role);
   let endpoint = await axios.get(
     `${ServerAddress}/get-UserInfoData/${email}/${role}`
   );
@@ -121,9 +121,41 @@ export const getProductListForActivist = async (Campaign_code) => {
   }
 };
 
+export const getAllMyProduct = async (SA_Code) => {
+  let endpoint = await axios.get(
+    `${ServerAddress}/get-AllMyProduct/${SA_Code}`
+  );
+  if (endpoint.status === 200) {
+    return endpoint.data;
+  } else {
+    return null;
+  }
+};
+
+export const getOrderDetail = async (BC_Code) => {
+  console.log(55, BC_Code);
+  let endpoint = await axios.get(`${ServerAddress}/get-OrderDetail/${BC_Code}`);
+  if (endpoint.status === 200) {
+    return endpoint.data;
+  } else {
+    return null;
+  }
+};
+
 export const UpdateMoneyStatus = async (TotalMoneyStatus, SA_Code) => {
   let endpoint = await axios.get(
     `${ServerAddress}/get-UpdateMoneyStatus/${TotalMoneyStatus}/${SA_Code}`
+  );
+  if (endpoint.status === 200) {
+    return endpoint.data;
+  } else {
+    return null;
+  }
+};
+
+export const UpdateAddMoneyStatus = async (userInfoCode) => {
+  let endpoint = await axios.get(
+    `${ServerAddress}/update-AddMoneyStatus/${userInfoCode}`
   );
   if (endpoint.status === 200) {
     return endpoint.data;

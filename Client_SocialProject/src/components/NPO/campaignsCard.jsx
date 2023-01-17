@@ -2,13 +2,21 @@ import React, { useState, useEffect, useContext } from "react";
 
 import "./CampaignsCardsStyle.css";
 import { useNavigate } from "react-router-dom";
-import { getAllCampaignsByNPO_code } from "./../../services/allGetServices";
+import {
+  getAllCampaignsByNPO_code,
+  getUserInfoData,
+  UpdateAddMoneyStatus,
+} from "./../../services/allGetServices";
 import { RollsStatus } from "./../../context/rollsStatus";
 import { UserDataContext } from "./../../context/userData";
+import { TwitterShareButton } from "react-twitter-embed";
+import { useAuth0 } from "@auth0/auth0-react";
+import { AddTweetToDB } from "../../services/allPostServices";
 
 export const CampaignsCard = () => {
   const { role } = useContext(RollsStatus);
-  const { userInfo } = useContext(UserDataContext);
+  const { userInfo, setUserInfo } = useContext(UserDataContext);
+  const { user } = useAuth0();
 
   const [AllCampaigns, setAllCampaigns] = useState([]);
 
@@ -37,6 +45,21 @@ export const CampaignsCard = () => {
         Campaign,
       },
     });
+  };
+
+  const handleUserInfo = async () => {
+    if (role === "N.P.O" || role === "company" || role === "Activist") {
+      let userInfo = await getUserInfoData(user.email, role);
+      let userInfoFullData = userInfo[0];
+      console.log(3, userInfoFullData);
+      setUserInfo(userInfoFullData);
+    }
+  };
+  const handleMoneyTwitter = async (Campaign) => {
+    console.log(Campaign);
+    await UpdateAddMoneyStatus(userInfo.Code);
+    await handleUserInfo();
+    await AddTweetToDB(Campaign, userInfo.Code);
   };
 
   return (
@@ -79,6 +102,19 @@ export const CampaignsCard = () => {
               )}
               {role === "Activist" && (
                 <div className="card--button">
+                  <button onClick={() => handleMoneyTwitter(Campaign)}>
+                    <TwitterShareButton
+                      url={Campaign.Landing_Page_URL}
+                      options={{
+                        text:
+                          "#SocialPro " +
+                          Campaign.HashTag +
+                          " Campaign for " +
+                          Campaign.Name,
+                      }}
+                    />
+                  </button>
+
                   <button
                     className="btn btn-success"
                     onClick={() => handleDonateProduct(Campaign)}

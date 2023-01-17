@@ -12,3 +12,5 @@ export * from "./CampaignsDataForNPO/allCampaignsTableNPO";
 export * from "./CampaignsDataForNPO/campaignsCardNPO";
 export * from "./Company/editOrAddProduct";
 export * from "./Company/ProductTable";
+export * from "./Company/orderTable";
+export * from "./SocialActivist/myProductTable";

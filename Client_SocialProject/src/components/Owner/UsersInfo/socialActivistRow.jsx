@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllSA_Rows } from "../../../services/allGetServices";
+import "../styleOwner.css";
 
 export const SocialActivistRow = () => {
   const [AllSARows, setAllSARows] = useState([]);
@@ -24,7 +25,7 @@ export const SocialActivistRow = () => {
             Address,
             Phone_Number,
             Money_Status,
-            Image_URL,
+            Image,
             Register_Time,
           } = item;
           return (
@@ -35,7 +36,9 @@ export const SocialActivistRow = () => {
               <td>{Address}</td>
               <td>{Phone_Number}</td>
               <td>{Money_Status}</td>
-              <td>{Image_URL}</td>
+              <td className="td--img">
+                <img src={Image} alt="" />
+              </td>
               <td>{Register_Time}</td>
             </tr>
           );

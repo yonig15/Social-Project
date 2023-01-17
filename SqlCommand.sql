@@ -61,7 +61,6 @@ select * from Orders
 
 
 
-
 update Register_Applications set Is_Approved = 0 where code = '3'
 
 select * from Register_Applications where Is_Approved =0
@@ -81,6 +80,9 @@ update Campaigns set Name = '" + m_Campaign.Name + "', Email = '" + m_Campaign.E
 
 select * from Products where BC_Code = 1
 
+select * from Orders where BC_Code =1
+
+
 select * from Campaigns where NPO_code =2
 
 select * from Non_Profit_Organizations where Email='be.happy.015@gmail.com' 
@@ -90,7 +92,7 @@ select * from Products where Campaign_code = 1002
 
 insert into Orders values (SA_code, BC_code, Campaign_code, Product_code, getdate(), 0)  update Products set Units_In_Stock = Units_In_Stock - 1 where Code = Product_code
 
-
+Campaign_code
 select * from Social_Activist
 
 update Social_Activist set Money_Status= 200 where Code=1
@@ -98,10 +100,34 @@ update Social_Activist set Money_Status= 200 where Code=1
 select [Quantity] from Orders
 select * from Orders
 
-SELECT Products.Name as 'Product_Name', Products.Price as 'Price', COUNT(Orders.Code) as 'Donation_Count',
+SELECT Products.Name as 'Product_Name', Products.Price as 'Price', COUNT(Orders.Code) as 'Total_Donations',
 sum(Orders.Quantity) as 'Quantity',Products.Price*sum(Orders.Quantity) as 'Total_Price', Campaigns.Name as 'Campaign_Name'
 FROM Orders
 JOIN Products ON Products.Code = Orders.Product_code
 JOIN Campaigns ON Orders.Campaign_code = Campaigns.Code
 WHERE Orders.SA_code = 1
 GROUP BY Products.Name, Products.Price, Campaigns.Name;
+
+select Orders.*, SA.FirstName+' '+ SA.LastName as SA_Name, BC.Name as BC_Name, Campaigns.Name as Campaign_Name, Products.Name as Product_Name, 
+SA.Address as Activist_Address, SA.Phone_Number as Activist_Phone,
+SA.Email as Activist_Email, Campaigns.Email as Campaign_Email 
+from Orders
+inner join Social_Activist as SA on Orders.SA_code = SA.Code
+inner join Buisness_Companies as BC on Orders.BC_code = BC.Code
+inner join Campaigns on Orders.Campaign_code = Campaigns.Code
+inner join Products on Orders.Product_code = Products.Code where Orders.BC_code= 1
+
+
+
+update Social_Activist set Money_Status = Money_Status+5 where code = 1
+
+select * from Tweets
+
+
+select * from Social_Activist
+
+insert into Tweets values(1,1,'#hastag','www.google.com','you are ok', getdate())
+
+insert into Tweets values(sa_code,campain_code,hashtag,landing_url,tweet_content, getdate())
+
+insert into Tweets values('1','1','#ShoshaSaveTheWorld','http://127.0.0.1:5173','Help the baby Shosha save the world and donate things for babies together with her', getdate()) where Code = 1

@@ -99,6 +99,20 @@ namespace SocialProject.DataSql
             string deleteQuery = "delete from Products where Code = " + productCode;
             SqlQuery.Write_ToDB(deleteQuery);
         }
+
+        public DataTable Send_getOrderDetailQuery(string BC_code)
+        {
+            return SqlQuery.Read_Table_FormDB("select Orders.*, SA.FirstName+' '+ SA.LastName as SA_Name, BC.Name as BC_Name, Campaigns.Name as Campaign_Name, Products.Name as Product_Name, \r\nSA.Address as Activist_Address, SA.Phone_Number as Activist_Phone,\r\nSA.Email as Activist_Email, Campaigns.Email as Campaign_Email \r\nfrom Orders\r\ninner join Social_Activist as SA on Orders.SA_code = SA.Code\r\ninner join Buisness_Companies as BC on Orders.BC_code = BC.Code\r\ninner join Campaigns on Orders.Campaign_code = Campaigns.Code\r\ninner join Products on Orders.Product_code = Products.Code where Orders.BC_code= " + BC_code);
+        }
+
+        public void Is_sendForOrderQuery(M_Order m_Order)
+        {
+            string updateQuery = "update Orders set Is_Sent = ~Is_Sent where code = " + m_Order.Code + "";
+            SqlQuery.Write_ToDB(updateQuery);
+        }
+        
+
+
         //**************************************************** Activist *****************************************
         public DataTable Send_getProductListForActivistQuery(string Campaign_code)
         {
@@ -114,8 +128,20 @@ namespace SocialProject.DataSql
             return SqlQuery.Read_Table_FormDB("select * from Social_Activist");
         }
 
+        public DataTable Send_getAllMyProductForActivistQuery(string SA_code)
+        {
+            return SqlQuery.Read_Table_FormDB("SELECT Products.Name as 'Product_Name', Products.Price as 'Price', COUNT(Orders.Code) as 'Total_Donations',\r\nsum(Orders.Quantity) as 'Quantity',Products.Price*sum(Orders.Quantity) as 'Total_Price', Campaigns.Name as 'Campaign_Name'\r\nFROM Orders\r\nJOIN Products ON Products.Code = Orders.Product_code\r\nJOIN Campaigns ON Orders.Campaign_code = Campaigns.Code\r\nWHERE Orders.SA_code = " + SA_code + "\r\nGROUP BY Products.Name, Products.Price, Campaigns.Name;");
+        }
+
+
+        public DataTable MoneyByTwitterQuery(string userInfoCode)
+        {
+            string updateQuery = "update Social_Activist set Money_Status = Money_Status + 5 where code = " + userInfoCode + "";
+            return SqlQuery.Read_Table_FormDB(updateQuery);
+        }
 
         
     }
     
+
 }

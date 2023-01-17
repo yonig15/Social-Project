@@ -12,6 +12,7 @@ export const AddOrEditProduct = (props) => {
   const location = useLocation();
   const { Campaign, product } = location.state;
 
+  console.log(20, userInfo);
   const [formProduct, setFormProduct] = useState({});
   const [ActionType, setActionType] = useState("Add");
 
@@ -27,13 +28,15 @@ export const AddOrEditProduct = (props) => {
         Image: "",
       });
     } else if (location.state && location.state.product) {
+      setActionType("Edit");
       setFormProduct({
+        Code: product.Code,
         Name: product.Name,
         Price: product.Price,
         Description: product.Description,
         Units_In_Stock: product.Units_In_Stock,
         BC_code: userInfo.Code,
-        Campaign_code: product.Code,
+        Campaign_code: product.Campaign_code,
         Image: product.Image,
       });
     }
@@ -94,20 +97,11 @@ export const AddOrEditProduct = (props) => {
       return;
     } else {
       handleAddData();
+      navigate("/productTable");
       console.log("Successfully send form request");
       notify_success();
+      setActionType("Add");
     }
-    setFormProduct({
-      Name: "",
-      Price: "",
-      Description: "",
-      Units_In_Stock: "",
-      BC_code: userInfo.Code,
-      Campaign_code: Campaign.Code,
-      Image: "",
-    });
-    setActionType("Add");
-    navigate("/");
   };
 
   return (

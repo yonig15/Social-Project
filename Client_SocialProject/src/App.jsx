@@ -26,6 +26,8 @@ import {
   CampaignsCardNPOPage,
   EditOrAddProductPage,
   ProductTablePage,
+  MyProductTablePage,
+  OrderTablePage,
 } from "./pages/page.index";
 import "./App.css";
 
@@ -99,6 +101,14 @@ function App() {
                     <Route
                       path="/productTable"
                       element={<ProductTablePage />}
+                    ></Route>
+                    <Route
+                      path="/myProductTable"
+                      element={<MyProductTablePage />}
+                    ></Route>
+                    <Route
+                      path="/orderTable"
+                      element={<OrderTablePage />}
                     ></Route>
                   </Routes>
                 </div>
