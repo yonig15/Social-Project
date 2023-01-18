@@ -1,9 +1,11 @@
 import axios from "axios";
 
 const ServerAddress = "http://localhost:7153/api/Users";
+const TwitterAddress = "http://localhost:7153/api/twitter";
 
 export const getRolesData = async (userId) => {
   let endpoint = await axios.get(`${ServerAddress}/get-role/${userId}`);
+  console.log(userId, "test");
   if (endpoint.status === 200) {
     return endpoint.data;
   } else {
@@ -157,6 +159,15 @@ export const UpdateAddMoneyStatus = async (userInfoCode) => {
   let endpoint = await axios.get(
     `${ServerAddress}/update-AddMoneyStatus/${userInfoCode}`
   );
+  if (endpoint.status === 200) {
+    return endpoint.data;
+  } else {
+    return null;
+  }
+};
+
+export const get_twitterPostForUpdate = async () => {
+  let endpoint = await axios.get(`${TwitterAddress}/get-twitterPostForUpdate`);
   if (endpoint.status === 200) {
     return endpoint.data;
   } else {

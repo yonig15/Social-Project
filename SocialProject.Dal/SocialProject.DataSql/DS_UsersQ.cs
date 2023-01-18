@@ -140,7 +140,12 @@ namespace SocialProject.DataSql
             return SqlQuery.Read_Table_FormDB(updateQuery);
         }
 
-        
+        public void UpdateTweetAndSA_MoneyQuery(M_Tweets newTweet)
+        {
+            string updateQuery = "if not exists(select Code from Tweets where Tweet_id like '" + newTweet.Tweet_id + "')\r\n\tbegin\r\n\t\tinsert into Tweets values (" + newTweet.SA_code + ", " + newTweet.Campaign_code + ", '" + newTweet.HashTag + "', '" + newTweet.Landing_Page_URL + "', '" + newTweet.Tweet_Content + "', getdate(), '" + newTweet.Tweet_id + "')\r\n\t\tupdate Social_Activist set Money_Status = Money_Status + 10 where Code = " + newTweet.SA_code + "\r\n\tend";
+            SqlQuery.Write_ToDB(updateQuery);
+        }
+
     }
     
 

@@ -15,5 +15,6 @@ namespace SocialProject.Model
         public string Landing_Page_URL { get; set; }
         public string Tweet_Content { get; set; }
         public DateTime Tweet_Time { get; set; }
+        public string Tweet_id { get; set; }
     }
 }

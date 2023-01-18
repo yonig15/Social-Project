@@ -17,5 +17,7 @@ namespace SocialProject.Model
         public decimal Money_Status { get; set; }
         public string Image { get; set; }
         public DateTime Register_Time { get; set; }
+
+        public string Twitter_Name { get; set; }
     }
 }

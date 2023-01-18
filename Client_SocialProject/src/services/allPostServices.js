@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const ServerAddress = "http://localhost:7153/api/Users";
+const TwitterAddress = "http://localhost:7153/api/twitter";
 
 export const addFormToContactUs = async (frm) => {
   await axios.post(`${ServerAddress}/post-ContactUs`, frm);
@@ -40,4 +41,8 @@ export const UpdateIs_send = async (Is_sendToUpdate) => {
 
 export const AddTweetToDB = async (Tweet, SA_code) => {
   await axios.post(`${ServerAddress}/Post-tweet/${SA_code}`, Tweet);
+};
+
+export const MakeA_TweetInTwitter = async (Tweet) => {
+  await axios.post(`${TwitterAddress}/post-MakeATweet`, Tweet);
 };

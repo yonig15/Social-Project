@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialProject.Entities", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialProject.Model", "SocialProject.Model\SocialProject.Model.csproj", "{D46323F8-3723-49D0-AEEC-17C8FF906896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialProject.MicroServer", "SocialProject.MicroServer\SocialProject.MicroServer.csproj", "{F0E63B84-8E32-45F7-B062-4EEB3C44D8DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialProject.MicroServer", "SocialProject.MicroServer\SocialProject.MicroServer.csproj", "{F0E63B84-8E32-45F7-B062-4EEB3C44D8DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

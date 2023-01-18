@@ -131,3 +131,13 @@ insert into Tweets values(1,1,'#hastag','www.google.com','you are ok', getdate()
 insert into Tweets values(sa_code,campain_code,hashtag,landing_url,tweet_content, getdate())
 
 insert into Tweets values('1','1','#ShoshaSaveTheWorld','http://127.0.0.1:5173','Help the baby Shosha save the world and donate things for babies together with her', getdate()) where Code = 1
+
+
+ALTER TABLE Social_Activist
+ADD Twitter_Name NVARCHAR(MAX) NULL;
+
+ALTER TABLE Tweets
+ADD Tweet_id NVARCHAR(MAX) NULL;
+
+
+if not exists(select Code from Tweets where Tweet_id like '" + newTweet.Tweet_id + "')\r\n\tbegin\r\n\t\t insert into Tweets values (" + newTweet.SA_code + ", " + newTweet.Campaign_code + ", '" + newTweet.HashTag + "', '" + newTweet.Landing_Page_URL + "', '" + newTweet.Tweet_Content + "', getdate(), '" + newTweet.Tweet_id + "')\r\n\t\t update Social_Activist set Money_Status = Money_Status + 10 where Code = " + newTweet.SA_code + "\r\n\tend

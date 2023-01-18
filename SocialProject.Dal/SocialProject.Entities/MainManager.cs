@@ -10,10 +10,12 @@ namespace SocialProject.Entities
     {
         public AllFormsManager AllFormsManager;
         public UsersManager UsersManager;
+        public TwitterManager twitterManager;
         private MainManager()
         {
             AllFormsManager = new AllFormsManager();
             UsersManager = new UsersManager();
+            twitterManager = new TwitterManager();
         }
 
         private static readonly MainManager instance = new MainManager();

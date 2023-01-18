@@ -14,11 +14,13 @@ import { DeleteProduct } from "./../../services/allDeleteServices";
 import { sendToOrderDetails } from "../../services/allPostServices";
 import { UpdateMoneyStatus } from "./../../services/allGetServices";
 import { useAuth0 } from "@auth0/auth0-react";
+import { MakeA_TweetInTwitter } from "./../../services/allPostServices";
 
 export const ProductParCompanyTable = () => {
   const { role } = useContext(RollsStatus);
   const { userInfo, setUserInfo } = useContext(UserDataContext);
 
+  console.log(50, role);
   const { user } = useAuth0();
   const navigate = useNavigate();
   const location = useLocation();
@@ -98,7 +100,6 @@ export const ProductParCompanyTable = () => {
 
   const handleDonate = async (Product, TotalPrice) => {
     let TotalMoneyStatus = userInfo.Money_Status - TotalPrice;
-    console.log(1, TotalMoneyStatus);
     if (Product.Price > userInfo.Money_Status) {
       notify_error("There is not enough money to donate");
     } else if (location.state && location.state.Campaign) {
@@ -109,8 +110,16 @@ export const ProductParCompanyTable = () => {
         Campaign_code: parseInt(Campaign.Code),
         Product_code: parseInt(Product.Code),
       };
+      const AddTweet = {
+        Twitter_Name: userInfo.Twitter_Name,
+        Quantity: UnitsInStock[Product.Code],
+        ProductName: Product.Name,
+        CampaignName: Campaign.Name,
+        CampaignHashTag: Campaign.HashTag,
+      };
       await sendToOrderDetails(AddOrder, UnitsInStock[Product.Code]);
       await getProductForActivistDB(Campaign);
+      await MakeA_TweetInTwitter(AddTweet);
       await UpdateMoneyStatus(TotalMoneyStatus, userInfo.Code);
       await handleUserInfo();
       setExpand(!expand);

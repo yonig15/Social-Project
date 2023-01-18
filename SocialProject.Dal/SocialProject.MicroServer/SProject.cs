@@ -67,7 +67,6 @@ namespace SocialProject.MicroServer
 
              case "get-AllTwitted":
                    
-
                  MainManager.Instance.UsersManager.ShowTweetsListFromDB();
                  responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getTweetsList);
                  return new OkObjectResult(responseMessage);

@@ -107,7 +107,7 @@ export const CampaignsCard = () => {
                       url={Campaign.Landing_Page_URL}
                       options={{
                         text:
-                          "#SocialPro " +
+                          "#SocialProject " +
                           Campaign.HashTag +
                           " Campaign for " +
                           Campaign.Name,
