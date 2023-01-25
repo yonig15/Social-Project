@@ -23,7 +23,7 @@ namespace SocialProject.DataSql
             string Register_ApplicationsQuery = "insert into Register_Applications values ('" + m_Social.FirstName + m_Social.LastName + "', '" + m_Social.Email + "', 'Activist', 0)";
             SqlQuery.Write_ToDB(Register_ApplicationsQuery);
 
-            string sqlQuery = "insert into Social_Activist values ('" + m_Social.FirstName + "','" + m_Social.LastName + "','" + m_Social.Email + "','" + m_Social.Address + "','" + m_Social.Phone_Number + "',0,'"+ m_Social.Image + "' ,getdate())";
+            string sqlQuery = "insert into Social_Activist values ('" + m_Social.FirstName + "','" + m_Social.LastName + "','" + m_Social.Email + "','" + m_Social.Address + "','" + m_Social.Phone_Number + "',0,'"+ m_Social.Image + "' ,getdate(),'"+ m_Social.Twitter_Name+ "')";
             SqlQuery.Write_ToDB(sqlQuery);
         }
 

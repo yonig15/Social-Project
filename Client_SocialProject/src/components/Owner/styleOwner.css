@@ -44,3 +44,9 @@ td:nth-child(2):hover {
   width: 70px;
   height: 70px;
 }
+
+table {
+  width: 100% !important;
+  table-layout: fixed;
+  word-wrap: break-word;
+}

@@ -12,6 +12,7 @@ export const FormSocialActivist = () => {
     Address: "",
     Phone_Number: "",
     Image: "",
+    Twitter_Name: "",
   });
 
   function handleChange(event) {
@@ -74,6 +75,7 @@ export const FormSocialActivist = () => {
       Address: "",
       Phone_Number: "",
       Image: "",
+      Twitter_Name: "",
     });
   }
 
@@ -131,6 +133,19 @@ export const FormSocialActivist = () => {
             name="Address"
             onChange={handleChange}
             value={formData_SocialActivist.Address}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Twitter_Name" className="frm-lbl">
+            Twitter Name
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your Twitter_Name"
+            className="form-control"
+            name="Twitter_Name"
+            onChange={handleChange}
+            value={formData_SocialActivist.Twitter_Name}
           />
         </div>
         <div className="form-group">
