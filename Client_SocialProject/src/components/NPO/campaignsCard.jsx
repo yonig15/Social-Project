@@ -102,18 +102,18 @@ export const CampaignsCard = () => {
               )}
               {role === "Activist" && (
                 <div className="card--button">
-                  <button onClick={() => handleMoneyTwitter(Campaign)}>
-                    <TwitterShareButton
-                      url={Campaign.Landing_Page_URL}
-                      options={{
-                        text:
-                          "#SocialProject " +
-                          Campaign.HashTag +
-                          " Campaign for " +
-                          Campaign.Name,
-                      }}
-                    />
-                  </button>
+                  {/* <button onClick={() => handleMoneyTwitter(Campaign)}> */}
+                  <TwitterShareButton
+                    url={Campaign.Landing_Page_URL}
+                    options={{
+                      text:
+                        "#SocialProject " +
+                        Campaign.HashTag +
+                        " Campaign for " +
+                        Campaign.Name,
+                    }}
+                  />
+                  {/* </button> */}
 
                   <button
                     className="btn btn-success"
