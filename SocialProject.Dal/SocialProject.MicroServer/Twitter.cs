@@ -87,12 +87,12 @@ namespace SocialProject.MicroServer
                     dataD = JsonConvert.DeserializeObject(await new StreamReader(req.Body).ReadToEndAsync());
                     if (dataD.Quantity > 1)
                     {
-                        var tweet = await userClient.Tweets.PublishTweetAsync("#SocialProject" + dataD.TwitterName + " just donated " + dataD.Quantity + " " + dataD.ProductName + "`s to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #SocialProject and " + dataD.CampaignHashTag + " for more info!");
+                        var tweet = await userClient.Tweets.PublishTweetAsync("#" +dataD.Twitter_Name + " just donated " + dataD.Quantity + " " + dataD.ProductName + "`s to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #SocialProject and " + dataD.CampaignHashTag + " for more info!");
                         Console.WriteLine("You published the tweet : " + tweet);
                     }
                     else
                     {
-                        var tweet = await userClient.Tweets.PublishTweetAsync("#SocialProject" + dataD.TwitterName + " just donated " + dataD.ProductName + " to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #SocialProject and " + dataD.CampaignHashTag + " for more info!");
+                        var tweet = await userClient.Tweets.PublishTweetAsync("#" +dataD.Twitter_Name + " just donated " + dataD.ProductName + " to support the " + dataD.CampaignName + " campaign, thank you for your kind donatinon\nsearch #SocialProject and " + dataD.CampaignHashTag + " for more info!");
                         Console.WriteLine("You published the tweet : " + tweet);
                     }
 

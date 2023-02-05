@@ -136,7 +136,7 @@ namespace SocialProject.DataSql
 
         public DataTable MoneyByTwitterQuery(string userInfoCode)
         {
-            string updateQuery = "update Social_Activist set Money_Status = Money_Status + 5 where code = " + userInfoCode + "";
+            string updateQuery = $"update Social_Activist set Money_Status = Money_Status + 5 where code = {userInfoCode}";
             return SqlQuery.Read_Table_FormDB(updateQuery);
         }
 
