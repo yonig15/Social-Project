@@ -67,6 +67,8 @@ namespace SocialProject.Entities
             dS_UsersQ.UpdateTweetAndSA_MoneyQuery(newTweet);
         }
 
+
+
        
     }
 }

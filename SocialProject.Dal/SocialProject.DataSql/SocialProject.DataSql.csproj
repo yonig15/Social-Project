@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyUtilities\MyUtilities.csproj">
+      <Project>{5858e14c-d0f9-4c1c-9dc0-e534a98a3f60}</Project>
+      <Name>MyUtilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SocialProject.Dal\SocialProject.Dal.csproj">
       <Project>{c1055f8e-2f16-4aea-87ef-39444960eb7a}</Project>
       <Name>SocialProject.Dal</Name>

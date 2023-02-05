@@ -13,11 +13,18 @@ namespace SocialProject.Entities
         public TwitterManager twitterManager;
         private MainManager()
         {
+            init();
+        }
+
+        public void init()
+        {
             AllFormsManager = new AllFormsManager();
             UsersManager = new UsersManager();
             twitterManager = new TwitterManager();
-        }
+            //lomanageg log1 = new logmanager(file);
+            //log1.LogEvent(msg);
 
+        }
         private static readonly MainManager instance = new MainManager();
         public static MainManager Instance { get { return instance; } }
 

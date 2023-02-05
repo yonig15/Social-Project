@@ -11,3 +11,5 @@ C:\level-up\Semester B\Midel Project\SocialProject.Dal\SocialProject.Entities\ob
 C:\level-up\Semester B\Midel Project\SocialProject.Dal\SocialProject.Entities\obj\Debug\SocialProject.Entities.csproj.CopyComplete
 C:\level-up\Semester B\Midel Project\SocialProject.Dal\SocialProject.Entities\obj\Debug\SocialProject.Entities.dll
 C:\level-up\Semester B\Midel Project\SocialProject.Dal\SocialProject.Entities\obj\Debug\SocialProject.Entities.pdb
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\SocialProject.Entities\bin\Debug\MyUtilities.dll
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\SocialProject.Entities\bin\Debug\MyUtilities.pdb

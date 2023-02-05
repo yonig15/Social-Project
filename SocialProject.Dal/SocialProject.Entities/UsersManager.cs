@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SocialProject.Entities
 {
-    public class UsersManager
+    public class UsersManager: BaseEntity
     {
         //*************************************************************** NPO + company + social_Activist ***********************************
 

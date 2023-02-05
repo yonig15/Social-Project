@@ -11,6 +11,7 @@
     <PackageReference Include="TweetinviAPI" Version="5.0.4" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyUtilities\MyUtilities.csproj" />
     <ProjectReference Include="..\SocialProject.Entities\SocialProject.Entities.csproj" />
     <ProjectReference Include="..\SocialProject.Model\SocialProject.Model.csproj" />
   </ItemGroup>
