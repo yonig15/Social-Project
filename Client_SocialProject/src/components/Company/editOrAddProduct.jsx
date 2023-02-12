@@ -1,10 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
 import { useLocation, useNavigate } from "react-router-dom";
-// import "../styleOwner.css";
-import { AddOrEditForm } from "./../../services/allPostServices";
+
 import { UserDataContext } from "./../../context/userData";
+import { AddOrEditForm } from "./../../services/User";
 
 export const AddOrEditProduct = (props) => {
   const { userInfo } = useContext(UserDataContext);

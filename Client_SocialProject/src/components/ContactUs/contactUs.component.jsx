@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { addFormToContactUs } from "../../services/allPostServices";
 import { ToastContainer, toast } from "react-toastify";
+import { addFormToContactUs } from "../../services/User";
 import "./styleForm.css";
 
 export const FormContactUs = () => {

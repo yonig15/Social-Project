@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllTwitted } from "../../services/allGetServices";
+import { getAllTwitted } from "../../services/Tweets";
 
 import "./styleOwner.css";
 

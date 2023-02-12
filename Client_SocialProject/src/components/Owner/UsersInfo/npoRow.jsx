@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getAllNPO_Rows } from "../../../services/allGetServices";
+
+import { getAllNPO_Rows } from "../../../services/NPO";
 import "../styleOwner.css";
 
 export const NPORow = () => {

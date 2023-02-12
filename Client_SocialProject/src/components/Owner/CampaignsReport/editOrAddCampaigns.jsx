@@ -1,10 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
+
+import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { AddOrEditForm } from "../../../services/allPostServices";
+
+import { AddOrEditForm } from "../../../services/User";
 
 import { UserDataContext } from "./../../../context/userData";
+
 import "../styleOwner.css";
-import { useLocation, useNavigate } from "react-router-dom";
 
 export const EditCampaigns = (props) => {
   const { userInfo } = useContext(UserDataContext);

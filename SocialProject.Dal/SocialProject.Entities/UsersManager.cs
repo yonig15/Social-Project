@@ -1,4 +1,5 @@
-﻿using SocialProject.DataSql;
+﻿using MyUtilities_CS_yoni;
+using SocialProject.DataSql;
 using SocialProject.Model;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,14 @@ namespace SocialProject.Entities
 {
     public class UsersManager: BaseEntity
     {
+        BaseDataSql baseDataSql;
+        public UsersManager(LogManager log) : base(log)
+        {
+            baseDataSql = new BaseDataSql(Log);
+        }
+
+        
+
         //*************************************************************** NPO + company + social_Activist ***********************************
 
         public DataTable getUserInfo = new DataTable();

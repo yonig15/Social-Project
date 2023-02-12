@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllSA_Rows } from "../../../services/allGetServices";
+import { getAllSA_Rows } from "../../../services/SocialActivist";
 import "../styleOwner.css";
 
 export const SocialActivistRow = () => {

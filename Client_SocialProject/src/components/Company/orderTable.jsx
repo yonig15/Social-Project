@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserDataContext } from "./../../context/userData";
-import { getOrderDetail } from "./../../services/allGetServices";
-import { UpdateIs_send } from "./../../services/allPostServices";
+import { getOrderDetail } from "./../../services/Product";
+import { UpdateIs_send } from "./../../services/User";
 
 export const OrderTable = () => {
   const { userInfo } = useContext(UserDataContext);

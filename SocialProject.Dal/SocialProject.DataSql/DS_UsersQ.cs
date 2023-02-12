@@ -1,4 +1,5 @@
-﻿using SocialProject.Dal;
+﻿using MyUtilities_CS_yoni;
+using SocialProject.Dal;
 using SocialProject.Model;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace SocialProject.DataSql
 {
-    public class DS_UsersQ
+    public class DS_UsersQ : BaseDataSql
     {
-
         //******************************** NPO + company + social_Activist ***********************************
 
 
         public DataTable Send_UserInfoQuery(string email,string role)
         {
+           
             if (role == "N.P.O")
             {
                 return SqlQuery.Read_Table_FormDB("select * from Non_Profit_Organizations where Email='"+email+"' ");

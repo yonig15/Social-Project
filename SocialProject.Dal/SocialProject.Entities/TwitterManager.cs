@@ -1,4 +1,5 @@
-﻿using SocialProject.DataSql;
+﻿using MyUtilities_CS_yoni;
+using SocialProject.DataSql;
 using SocialProject.Model;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace SocialProject.Entities
 {
-    public class TwitterManager
+    public class TwitterManager: BacePromotionSystem
     {
-
+        public TwitterManager(LogManager log) : base(log) { }
         private DataTable getSocialActivist = new DataTable();
 
         public List<M_SocialActivist> FillSocialActivistListFromDB()

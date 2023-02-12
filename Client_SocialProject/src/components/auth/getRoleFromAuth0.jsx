@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { RollsStatus } from "./../../context/rollsStatus";
-import { getRolesData, getUserInfoData } from "../../services/allGetServices";
+import { getRolesData, getUserInfoData } from "../../services/User";
 import { UserDataContext } from "./../../context/userData";
-import { get_twitterPostForUpdate } from "./../../services/allGetServices";
+import { get_twitterPostForUpdate } from "./../../services/Tweets";
 
 export const GetRoleFromAuth0 = (props) => {
   const { role, setRole } = useContext(RollsStatus);

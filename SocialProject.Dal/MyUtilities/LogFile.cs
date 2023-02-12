@@ -22,7 +22,7 @@ namespace MyUtilities_CS_yoni
 
         public void Init() 
         {
-            FileName = $"Log{count}_{DateTime.Now}.txt";
+            FileName = $"Log{count}.txt";
             using (File.Create(FileName)) { }
         }
         public void LogEvent(string msg)

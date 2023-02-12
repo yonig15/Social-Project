@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDataSql.cs" />
     <Compile Include="DS_Forms.cs" />
     <Compile Include="DS_UsersQ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

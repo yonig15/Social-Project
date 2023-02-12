@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllFormsManager.cs" />
+    <Compile Include="BacePromotionSystem.cs" />
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="CommandsManager.cs" />
     <Compile Include="MainManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterManager.cs" />

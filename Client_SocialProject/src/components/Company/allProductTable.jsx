@@ -1,20 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { useAuth0 } from "@auth0/auth0-react";
+
 import {
   getProductListForActivist,
   getProductPerCompany,
-  getUserInfoData,
-} from "../../services/allGetServices";
-import "./styleCompany.css";
+  DeleteProduct,
+  sendToOrderDetails,
+} from "../../services/Product";
+
+import {
+  MakeA_TweetInTwitter,
+  UpdateMoneyStatus,
+} from "./../../services/Tweets";
+
+import { getUserInfoData } from "./../../services/User";
+
 import { UserDataContext } from "./../../context/userData";
 import { RollsStatus } from "./../../context/rollsStatus";
-import { ToastContainer, toast } from "react-toastify";
-import { DeleteProduct } from "./../../services/allDeleteServices";
-import { sendToOrderDetails } from "../../services/allPostServices";
-import { UpdateMoneyStatus } from "./../../services/allGetServices";
-import { useAuth0 } from "@auth0/auth0-react";
-import { MakeA_TweetInTwitter } from "./../../services/allPostServices";
+
+import "./styleCompany.css";
 
 export const ProductParCompanyTable = () => {
   const { role } = useContext(RollsStatus);

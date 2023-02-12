@@ -16,9 +16,9 @@ namespace MyUtilities_CS_yoni
         {
             try
             {
-                SqlQuery.ConnectionStringInit(ConnectionString);
+                SqlQueryLog.ConnectionStringInit(ConnectionString);
                 string CreateTableQuery = "IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'LogTable' AND schema_name(schema_id) = 'dbo') \r\nBEGIN\r\n    CREATE TABLE dbo.LogTable(Code int primary key identity, \r\n    LogType nvarchar(max), LogTime datetime, messege nvarchar(max), ExceptionMsg nvarchar(MAX))\r\nEND";
-                SqlQuery.WriteToDB(CreateTableQuery);
+                SqlQueryLog.WriteToDB(CreateTableQuery);
                 LogCheckHouseKeeping();
             }
             catch (Exception ex)
@@ -32,7 +32,7 @@ namespace MyUtilities_CS_yoni
             try
             {
                 string sqlQuery = $"insert into {LogTableName} values('Event', getdate(),'{message}',null)";
-                SqlQuery.WriteToDB(sqlQuery);
+                SqlQueryLog.WriteToDB(sqlQuery);
             }
             catch (Exception ex)
             {
@@ -42,19 +42,19 @@ namespace MyUtilities_CS_yoni
         public void LogError(string message)
         {
             string sqlQuery = $"insert into {LogTableName} values('Error', getdate(),'{message}',null)";
-            SqlQuery.WriteToDB(sqlQuery);
+            SqlQueryLog.WriteToDB(sqlQuery);
         }
 
         public void LogException(string message, Exception ex)
         {
             string sqlQuery = $"insert into {LogTableName} values('Exception', getdate(),'{message}', '{ex.Message}')";
-            SqlQuery.WriteToDB(sqlQuery);
+            SqlQueryLog.WriteToDB(sqlQuery);
         }
 
         public void LogCheckHouseKeeping()
         {
             string sqlQuery = $"DELETE FROM {LogTableName}\r\nWHERE Date < DATEADD(month, -3, GETDATE());";
-            SqlQuery.WriteToDB(sqlQuery);
+            SqlQueryLog.WriteToDB(sqlQuery);
         }
     }
 }

@@ -2,16 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 
 import "./CampaignsCardsStyle.css";
 import { useNavigate } from "react-router-dom";
-import {
-  getAllCampaignsByNPO_code,
-  getUserInfoData,
-  UpdateAddMoneyStatus,
-} from "./../../services/allGetServices";
+import { UpdateAddMoneyStatus } from "./../../services/SocialActivist";
+import { getAllCampaignsByNPO_code } from "./../../services/Campaigns";
+import { getUserInfoData } from "../../services/User";
+import { AddTweetToDB } from "../../services/Tweets";
 import { RollsStatus } from "./../../context/rollsStatus";
 import { UserDataContext } from "./../../context/userData";
 import { TwitterShareButton } from "react-twitter-embed";
 import { useAuth0 } from "@auth0/auth0-react";
-import { AddTweetToDB } from "../../services/allPostServices";
 
 export const CampaignsCard = () => {
   const { role } = useContext(RollsStatus);

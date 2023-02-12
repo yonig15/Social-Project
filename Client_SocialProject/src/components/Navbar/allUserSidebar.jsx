@@ -8,7 +8,7 @@ import { GetRoleFromAuth0 } from "./../auth/getRoleFromAuth0";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import { RegisterSidebar } from "./registerSidebar";
-import { getPending } from "../../services/allGetServices";
+import { getPending } from "../../services/User";
 
 export const AllUserSidebar = () => {
   const { role } = useContext(RollsStatus);

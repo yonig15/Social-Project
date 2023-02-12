@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
-import "../styleOwner.css";
-
 import { SocialActivistRow } from "./socialActivistRow";
 import { CompanyRow } from "./companyRow";
 import { NPORow } from "./npoRow";
+import "../styleOwner.css";
 
 export const AllUsersTable = () => {
   const [filter, setFilter] = useState("all");

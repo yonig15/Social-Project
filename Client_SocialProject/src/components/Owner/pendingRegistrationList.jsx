@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { getPendingList, UpdateIs_Approved } from "../../services/User";
 import "./styleOwner.css";
-
-import { getPendingList } from "../../services/allGetServices";
-import { UpdateIs_Approved } from "./../../services/allPostServices";
 
 export const PendingRegistrationList = () => {
   const [AllUsers, setAllUsers] = useState([]);

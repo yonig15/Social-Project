@@ -91,7 +91,7 @@ namespace MyUtilities_CS_yoni
 
             });
         }
-        public static void LogEvent(string msg)
+        public void LogEvent(string msg)
         {
             if (MyLog != null)
             {
@@ -100,7 +100,7 @@ namespace MyUtilities_CS_yoni
             }
         }
 
-        public static void LogError(string msg)
+        public void LogError(string msg)
         {
             if (MyLog != null)
             {
@@ -109,7 +109,7 @@ namespace MyUtilities_CS_yoni
             }
         }
 
-        public static void LogException(string msg, Exception exce)
+        public void LogException(string msg, Exception exce)
         {
             if (MyLog != null)
             {

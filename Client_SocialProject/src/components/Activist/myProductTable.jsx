@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAllMyProduct } from "../../services/allGetServices";
+import { getAllMyProduct } from "../../services/Product";
 import { UserDataContext } from "./../../context/userData";
 
 export const MyProductTable = () => {

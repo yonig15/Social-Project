@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getAllCompany_Rows } from "./../../../services/allGetServices";
+
+import { getAllCompany_Rows } from "./../../../services/BCompany";
 import "../styleOwner.css";
 
 export const CompanyRow = () => {

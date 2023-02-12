@@ -1,10 +1,10 @@
 import React from "react";
-
-import "./styleRegister.css";
-import { FormCompany } from "./formCompany";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import { FormCompany } from "./formCompany";
 import { FormNPO } from "./formNPO";
 import { FormSocialActivist } from "./formSocialActivist";
+import "./styleRegister.css";
 
 export const FormsForRegister = () => {
   const navigate = useNavigate();

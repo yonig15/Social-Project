@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace MyUtilities_CS_yoni
 {
-    public class SqlQuery
+    public class SqlQueryLog
     {
         public static string connectionString;
         public static void ConnectionStringInit(string ConnectionString)

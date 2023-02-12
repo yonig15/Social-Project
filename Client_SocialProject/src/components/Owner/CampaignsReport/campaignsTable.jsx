@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 
+import { useNavigate } from "react-router-dom";
 import {
   getAllCampaignsByNPO_code,
   getAllCampaigns,
-} from "../../../services/allGetServices";
-import { useNavigate } from "react-router-dom";
-import { UpdateIs_Active } from "../../../services/allPostServices";
+} from "../../../services/Campaigns";
+import { UpdateIs_Active } from "../../../services/User";
+
 import { UserDataContext } from "./../../../context/userData";
-import "../styleOwner.css";
 import { RollsStatus } from "./../../../context/rollsStatus";
+import "../styleOwner.css";
 
 export const CampaignsTable = () => {
   const { role } = useContext(RollsStatus);

@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 using SocialProject.Dal;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+using MyUtilities_CS_yoni;
 
 namespace SocialProject.DataSql
 {
-    public class DS_Forms
+    public class DS_Forms: BaseDataSql
     {
+        public DS_Forms(LogManager log) : base(log) {}
+
         public void EnterContactUsFormToDB(M_ContactUs M_ContactUs)
         {
+            
+            Log.LogEvent("msg");
             string sqlQuery = "insert into Contact_Us values ('" + M_ContactUs.FirstName + "','" + M_ContactUs.LastName + "','" + M_ContactUs.Email + "','"+ M_ContactUs.Message+ "','" + M_ContactUs.JoinedNewsletter + "',getdate())";
             SqlQuery.Write_ToDB(sqlQuery);
         }

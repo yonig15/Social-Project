@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
-import { addFormRole } from "../../services/allPostServices";
 import { ToastContainer, toast } from "react-toastify";
+
+import { addFormRole } from "../../services/User";
 import "./styleRegister.css";
 
 export const FormSocialActivist = () => {

@@ -49,7 +49,7 @@
     <Compile Include="LogNone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleLogData.cs" />
-    <Compile Include="SqlQuery.cs" />
+    <Compile Include="SqlQueryLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SQL_Log.sql" />
