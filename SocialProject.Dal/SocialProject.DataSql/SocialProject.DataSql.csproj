@@ -42,7 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDataSql.cs" />
-    <Compile Include="DS_Forms.cs" />
+    <Compile Include="DS_BCompany.cs" />
+    <Compile Include="DS_Campaigns.cs" />
+    <Compile Include="DS_configuration.cs" />
+    <Compile Include="DS_NPO.cs" />
+    <Compile Include="DS_Product.cs" />
+    <Compile Include="DS_SocialActivist.cs" />
+    <Compile Include="DS_Twitter.cs" />
     <Compile Include="DS_UsersQ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

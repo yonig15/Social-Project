@@ -18,29 +18,55 @@ namespace SocialProject.MicroServer
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "BCompany/{action}/{value?}/{value2?}")] HttpRequest req,
         string action, string value, string value2, ILogger log)
         {
+            string requestBody1 = await req.ReadAsStringAsync();
 
-            string responseMessage;
-
-            switch (action)
+            try
             {
-                //****************************************All Get Request*****************************
-
-                case "get-AllCompanyRows":
-
-                    try
-                    {
-                        MainManager.Instance.UsersManager.ShowCompanyListFromDB();
-                        responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getCompanyList);
-                        return new OkObjectResult(responseMessage);
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-
+                (string response, object result) = MainManager.Instance.CommandsManager.CommandList[action].Run(value, value2, requestBody1);
+                switch (response)
+                {
+                    case "OkObjectResult":
+                        return new OkObjectResult(result);
+                    case "NotFoundResult":
+                        return new NotFoundResult();
+                    case "BadRequestObjectResult":
+                        return new BadRequestObjectResult(result);
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.LogManager.LogException($"exception while execute {action} command: ", ex);
+            }
+         
             return null;
         }
     }
 }
+
+
+
+
+
+//string responseMessage;
+
+//switch (action)
+//{
+//    //****************************************All Get Request*****************************
+
+//    case "get-AllCompanyRows":
+
+//        try
+//        {
+//            MainManager.Instance.BCompanyManager.ShowCompanyListFromDB();
+//            responseMessage = JsonConvert.SerializeObject(MainManager.Instance.BCompanyManager.getCompanyList);
+//            return new OkObjectResult(responseMessage);
+//        }
+//        catch (Exception)
+//        {
+
+//            throw;
+//        }
+
+//}

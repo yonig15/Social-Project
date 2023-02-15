@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="M_BusinessCompany.cs" />
     <Compile Include="M_Campaign.cs" />
+    <Compile Include="M_Configuration.cs" />
     <Compile Include="M_ContactUs.cs" />
     <Compile Include="M_NonProfitOrganization.cs" />
     <Compile Include="M_Order.cs" />

@@ -19,30 +19,55 @@ namespace SocialProject.MicroServer
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "NPO/{action}/{value?}/{value2?}")] HttpRequest req,
         string action, string value, string value2, ILogger log)
         {
-            string requestBody;
-            string responseMessage;
+            string requestBody1 = await req.ReadAsStringAsync();
 
-            switch (action)
+            try
             {
-                //****************************************All Get Request*****************************
-
-                case "get-AllNPORows":
-
-                    try
-                    {
-                        MainManager.Instance.UsersManager.ShowNPOListFromDB();
-                        responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getNPOList);
-                        return new OkObjectResult(responseMessage);
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-  
-
+                (string response, object result) = MainManager.Instance.CommandsManager.CommandList[action].Run(value, value2, requestBody1);
+                switch (response)
+                {
+                    case "OkObjectResult":
+                        return new OkObjectResult(result);
+                    case "NotFoundResult":
+                        return new NotFoundResult();
+                    case "BadRequestObjectResult":
+                        return new BadRequestObjectResult(result);
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.LogManager.LogException($"exception while execute {action} command: ", ex);
+            }
+           
             return null;
         }
     }
 }
+
+
+
+//string requestBody;
+//string responseMessage;
+
+//switch (action)
+//{
+//    //****************************************All Get Request*****************************
+
+//    case "get-AllNPORows":
+
+//        try
+//        {
+//            MainManager.Instance.NPOManager.ShowNPOListFromDB();
+//            responseMessage = JsonConvert.SerializeObject(MainManager.Instance.NPOManager.getNPOList);
+//            return new OkObjectResult(responseMessage);
+//        }
+//        catch (Exception)
+//        {
+
+//            throw;
+//        }
+
+
+//}

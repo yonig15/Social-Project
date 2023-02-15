@@ -13,171 +13,211 @@ namespace SocialProject.Entities
     public class UsersManager: BaseEntity
     {
         BaseDataSql baseDataSql;
+        private DS_UsersQ dS_UsersQ;
         public UsersManager(LogManager log) : base(log)
         {
             baseDataSql = new BaseDataSql(Log);
+            dS_UsersQ = new DS_UsersQ(Log);
         }
+       
 
-        
-
-        //*************************************************************** NPO + company + social_Activist ***********************************
+        //*************************************************************** User-Info for NPO + company + social_Activist ***********************************
 
         public DataTable getUserInfo = new DataTable();
         public void get_UserInfo_FromDB(string email, string role)
         {
-            getUserInfo.Clear();
-
-            if(role == "N.P.O")
+            try
             {
-                DS_UsersQ DS_UsersQ = new DS_UsersQ();
-                getUserInfo = DS_UsersQ.Send_UserInfoQuery(email, role);
+               getUserInfo.Clear();
+               getUserInfo = dS_UsersQ.Send_UserInfoQuery(email, role);
+               Log.LogEvent(@"Entities \ UsersManager \ get_UserInfo_FromDB ran Successfully - ");
             }
-            else if (role == "company")
+            catch (Exception ex)
             {
-                DS_UsersQ DS_UsersQ = new DS_UsersQ();
-                getUserInfo = DS_UsersQ.Send_UserInfoQuery(email, role);
-            }
-            else
-            {
-                DS_UsersQ DS_UsersQ = new DS_UsersQ();
-                getUserInfo = DS_UsersQ.Send_UserInfoQuery(email, role);
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
             }
         }
 
-        //**************************************************** Owner *****************************************
 
         public DataTable getPendingList = new DataTable();
-
         public void ShowAllPendingListFromDB()
         {
-            getPendingList.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getPendingList = DS_UsersQ.Send_getPendingListQuery();
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ ShowAllPendingListFromDB ran Successfully - ");
+                getPendingList.Clear();
+                getPendingList = dS_UsersQ.Send_getPendingListQuery();
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
-        public bool? get_Pending_FromDB (string email)
+        public bool? get_Pending_FromDB(string email)
         {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            return dS_UsersQ.Send_PenddingQuery(email);
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ get_Pending_FromDB ran Successfully - ");
+                return dS_UsersQ.Send_PenddingQuery(email);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+                return null;
+            }
+
         }
+
+        public void SendContactUsFormToDB(M_ContactUs m_ContactUs)
+        {
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendContactUsFormToDB ran Successfully - ");
+                dS_UsersQ.EnterContactUsFormToDB(m_ContactUs);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
+        }
+
+        public void SendSocialActivistFormToDB(M_SocialActivist m_Social)
+        {
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendSocialActivistFormToDB ran Successfully - ");
+                dS_UsersQ.EnterSocialActivistFormToDB(m_Social);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+        }
+
+        public void SendNPOFormToDB(M_NonProfitOrganization m_NonProfit)
+        {
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendNPOFormToDB ran Successfully - ");
+                dS_UsersQ.EnterNPOFormToDB(m_NonProfit);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+
+            }
+
+        }
+
+        public void SendCompanyFormToDB(M_BusinessCompany m_Company)
+        {
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendCompanyFormToDB ran Successfully - ");
+                dS_UsersQ.EnterCompanyFormToDB(m_Company);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
+        }
+
         public void UpdateApproveUserInDB(M_Register_Applications m_Register_App)
         {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            dS_UsersQ.ApproveUserQuery(m_Register_App);
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ UpdateApproveUserInDB ran Successfully - ");
+                dS_UsersQ.ApproveUserQuery(m_Register_App);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+           
         }
+
         public void UpdateIs_ActiveInDB(M_Campaign m_Campaign)
         {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            dS_UsersQ.Is_ActiveCampaignsQuery(m_Campaign);
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ UpdateIs_ActiveInDB ran Successfully - ");
+                dS_UsersQ.Is_ActiveCampaignsQuery(m_Campaign);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
 
-        public DataTable getTweetsList = new DataTable();
-        public void ShowTweetsListFromDB()
+        public void SendCampaignForm_ToDB(M_Campaign m_Campaign)
         {
-            getTweetsList.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getTweetsList = DS_UsersQ.Send_getTweetsListQuery();
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendCampaignForm_ToDB ran Successfully - ");
+                dS_UsersQ.EnterCampaignFormToDB(m_Campaign);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
 
-        
-        public DataTable getSocialActivistList = new DataTable();
-        public void ShowSocialActivistListFromDB()
+        public void SendEditCampaignForm_ToDB(M_Campaign m_Campaign)
         {
-            getSocialActivistList.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getSocialActivistList = DS_UsersQ.Send_getSocialActivistListQuery();
-        }
-
-        public DataTable getNPOList = new DataTable();
-        public void ShowNPOListFromDB()
-        {
-            getNPOList.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getNPOList = DS_UsersQ.Send_getNPOListQuery();
-        }
-
-        public DataTable getCompanyList = new DataTable();
-        public void ShowCompanyListFromDB()
-        {
-            getCompanyList.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getCompanyList = DS_UsersQ.Send_getCompanyListQuery();
-        }
-        public DataTable getAllCampaignsByCode = new DataTable();
-        public void ShowAllCampaignsListByNPOFromDB(string NPO_code)
-        {
-            getAllCampaignsByCode.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getAllCampaignsByCode = DS_UsersQ.Send_getAllCampaignsListByNPO_CodeQuery(NPO_code);
-        }
-        
-
-        public DataTable getAllCampaigns = new DataTable();
-        public void ShowAllCampaignsListFromDB()
-        {
-            getAllCampaigns.Clear();
-            DS_UsersQ DS_UsersQ = new DS_UsersQ();
-            getAllCampaigns = DS_UsersQ.Send_getAllCampaignsListQuery();
-        }
-
-
-        //*************************************************************** Company ***********************************
-
-        public DataTable getProductList = new DataTable();
-        public void ShowProductListFromDB(string BC_code)
-        {
-          DS_UsersQ dS_UsersQ = new DS_UsersQ();
-          getProductList = dS_UsersQ.Send_getProductListQuery(BC_code);
-        }
-
-        public void Delete_Product(string productCode)
-        {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            dS_UsersQ.DeleteProductQuery(productCode);
-        }
-
-        public DataTable getOrderDetail = new DataTable();
-        public void ShowOrderDetailForCompanyFromDB(string BC_code)
-        {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            getOrderDetail = dS_UsersQ.Send_getOrderDetailQuery(BC_code);
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendEditCampaignForm_ToDB ran Successfully - ");
+                dS_UsersQ.EnterEditCampaignFormToDB(m_Campaign);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
         public void UpdateIs_sendInDB(M_Order m_Order)
         {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            dS_UsersQ.Is_sendForOrderQuery(m_Order);
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ UpdateIs_sendInDB ran Successfully - ");
+                dS_UsersQ.Is_sendForOrderQuery(m_Order);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
-        
-        //*************************************************************** Activist ***********************************
-
-        public DataTable getProductListForActivist = new DataTable();
-        public void ShowProductListForActivistFromDB(string Campaign_code)
+        public void SendProductForm_ToDB(M_Product m_Product)
         {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            getProductListForActivist = dS_UsersQ.Send_getProductListForActivistQuery(Campaign_code);
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendProductForm_ToDB ran Successfully - ");
+                dS_UsersQ.EnterProductFormToDB(m_Product);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+           
         }
-
-        public DataTable getNewMoneyStatusForActivist = new DataTable();
-        public void ShowNewMoneyStatusForActivistFromDB(string NEWMoneyStatus,string SA_Code)
+        public void SendEditProductForm_ToDB(M_Product m_Product)
         {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            getNewMoneyStatusForActivist = dS_UsersQ.Send_getNEWMoneyStatusForActivistQuery(NEWMoneyStatus, SA_Code);
-        }
+            try
+            {
+                Log.LogEvent(@"Entities \ UsersManager \ SendEditProductForm_ToDB ran Successfully - ");
+                dS_UsersQ.EnterEditProductFormToDB(m_Product);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
 
-        public DataTable getAllMyProductForActivist = new DataTable();
-        public void ShowAllMyProductForActivistFromDB(string SA_code)
-        {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            getAllMyProductForActivist = dS_UsersQ.Send_getAllMyProductForActivistQuery(SA_code);
-        }
-
-
-        public DataTable getMoneyStatusForActivist = new DataTable();
-        public void UpdateMoneyStatusInDB(string userInfoCode)
-        {
-            DS_UsersQ dS_UsersQ = new DS_UsersQ();
-            getMoneyStatusForActivist = dS_UsersQ.MoneyByTwitterQuery(userInfoCode);
         }
 
     }

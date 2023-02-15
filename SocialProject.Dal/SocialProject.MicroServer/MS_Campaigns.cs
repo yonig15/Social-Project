@@ -18,44 +18,70 @@ namespace SocialProject.MicroServer
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "Campaigns/{action}/{value?}/{value2?}")] HttpRequest req,
         string action, string value, string value2, ILogger log)
         {
-          
-            string responseMessage;
+            string requestBody1 = await req.ReadAsStringAsync();
 
-            switch (action)
+            try
             {
-                //****************************************All Get Request*****************************
-
-                case "get-AllCampaigns":
-
-                    try
-                    {
-                        MainManager.Instance.UsersManager.ShowAllCampaignsListFromDB();
-                        responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getAllCampaigns);
-                        return new OkObjectResult(responseMessage);
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-
-                case "get-AllCampaignsByNPO_code":
-
-                    try
-                    {
-                        MainManager.Instance.UsersManager.ShowAllCampaignsListByNPOFromDB(value);
-                        responseMessage = JsonConvert.SerializeObject(MainManager.Instance.UsersManager.getAllCampaignsByCode);
-                        return new OkObjectResult(responseMessage);
-
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-
+                (string response, object result) = MainManager.Instance.CommandsManager.CommandList[action].Run(value, value2, requestBody1);
+                switch (response)
+                {
+                    case "OkObjectResult":
+                        return new OkObjectResult(result);
+                    case "NotFoundResult":
+                        return new NotFoundResult();
+                    case "BadRequestObjectResult":
+                        return new BadRequestObjectResult(result);
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MainManager.Instance.LogManager.LogException($"exception while execute {action} command: ", ex);
+            }
+
+           
             return null;
         }
     }
 }
+
+
+
+
+//string responseMessage;
+
+//switch (action)
+//{
+//    //****************************************All Get Request*****************************
+
+//    case "get-AllCampaigns":
+
+//        try
+//        {
+//            MainManager.Instance.CampaignsManager.ShowAllCampaignsListFromDB();
+//            responseMessage = JsonConvert.SerializeObject(MainManager.Instance.CampaignsManager.getAllCampaigns);
+//            return new OkObjectResult(responseMessage);
+//        }
+//        catch (Exception)
+//        {
+
+//            throw;
+//        }
+
+//    case "get-AllCampaignsByNPO_code":
+
+//        try
+//        {
+//            MainManager.Instance.CampaignsManager.ShowAllCampaignsListByNPOFromDB(value);
+//            responseMessage = JsonConvert.SerializeObject(MainManager.Instance.CampaignsManager.getAllCampaignsByCode);
+//            return new OkObjectResult(responseMessage);
+
+//        }
+//        catch (Exception)
+//        {
+
+//            throw;
+//        }
+
+//}

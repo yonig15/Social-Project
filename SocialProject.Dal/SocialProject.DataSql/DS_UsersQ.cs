@@ -12,142 +12,242 @@ namespace SocialProject.DataSql
 {
     public class DS_UsersQ : BaseDataSql
     {
-        //******************************** NPO + company + social_Activist ***********************************
+        BaseDal BaseDal;
+        public DS_UsersQ(LogManager log) : base(log)
+        {
+            BaseDal = new BaseDal(Log);
+        }
 
+
+        //******************************** NPO + company + social_Activist ***********************************
 
         public DataTable Send_UserInfoQuery(string email,string role)
         {
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ Send_UserInfoQuery ran Successfully - ");
+                if (role == "N.P.O")
+                {
+                    return SqlQuery.Read_Table_FormDB("select * from Non_Profit_Organizations where Email='" + email + "' ");
+                }
+                else if (role == "company")
+                {
+                    return SqlQuery.Read_Table_FormDB("select * from Buisness_Companies where Email='" + email + "' ");
+                }
+                else
+                {
+                    return SqlQuery.Read_Table_FormDB("select * from Social_Activist where Email='" + email + "' ");
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+                return null;
+            }
            
-            if (role == "N.P.O")
-            {
-                return SqlQuery.Read_Table_FormDB("select * from Non_Profit_Organizations where Email='"+email+"' ");
-            }
-            else if (role == "company")
-            {
-                return SqlQuery.Read_Table_FormDB("select * from Buisness_Companies where Email='" + email + "' ");
-            }
-            else
-            {
-                return SqlQuery.Read_Table_FormDB("select * from Social_Activist where Email='" + email + "' ");
-            }
         }
 
-        //**************************************************** Owner + Campaigns *****************************************
+
         public DataTable Send_getPendingListQuery()
         {
-            return SqlQuery.Read_Table_FormDB("select * from Register_Applications where Is_Approved = 0");
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ Send_getPendingListQuery ran Successfully - ");
+                return SqlQuery.Read_Table_FormDB("select * from Register_Applications where Is_Approved = 0");
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+                return null;
+            }
+            
         }
-        
+
 
         public bool? Send_PenddingQuery(string email)
         {
-          string Is_Approved = "select Is_Approved from Register_Applications where Email like '" + email + "'";
-          bool? Pending = (bool?)SocialProject.Dal.SqlQuery.Read_Scalar_FromDB(Is_Approved);
-          return Pending;
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ Send_PenddingQuery ran Successfully - ");
+                string Is_Approved = "select Is_Approved from Register_Applications where Email like '" + email + "'";
+                bool? Pending = (bool?)SocialProject.Dal.SqlQuery.Read_Scalar_FromDB(Is_Approved);
+                return Pending;
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+                return null;
+            }  
+        }
+
+
+        public void EnterContactUsFormToDB(M_ContactUs M_ContactUs)
+        {
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterContactUsFormToDB ran Successfully - ");
+                string sqlQuery = "insert into Contact_Us values ('" + M_ContactUs.FirstName + "','" + M_ContactUs.LastName + "','" + M_ContactUs.Email + "','" + M_ContactUs.Message + "','" + M_ContactUs.JoinedNewsletter + "',getdate())";
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+        }
+
+        public void EnterSocialActivistFormToDB(M_SocialActivist m_Social)
+        {
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterSocialActivistFormToDB ran Successfully - ");
+                string Register_ApplicationsQuery = "insert into Register_Applications values ('" + m_Social.FirstName + m_Social.LastName + "', '" + m_Social.Email + "', 'Activist', 0)";
+                SqlQuery.Write_ToDB(Register_ApplicationsQuery);
+
+                string sqlQuery = "insert into Social_Activist values ('" + m_Social.FirstName + "','" + m_Social.LastName + "','" + m_Social.Email + "','" + m_Social.Address + "','" + m_Social.Phone_Number + "',0,'" + m_Social.Image + "' ,getdate(),'" + m_Social.Twitter_Name + "')";
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+        }
+
+        public void EnterNPOFormToDB(M_NonProfitOrganization m_NonProfit)
+        {
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterNPOFormToDB ran Successfully - ");
+                string Register_ApplicationsQuery = "insert into Register_Applications values ('" + m_NonProfit.Name + "', '" + m_NonProfit.Email + "', 'N.P.O', 0)";
+                SqlQuery.Write_ToDB(Register_ApplicationsQuery);
+
+                string sqlQuery = "insert into Non_Profit_Organizations values ('" + m_NonProfit.Name + "','" + m_NonProfit.Email + "','" + m_NonProfit.Website_URL + "','" + m_NonProfit.Image + "',getdate())";
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
+        }
+
+        public void EnterCompanyFormToDB(M_BusinessCompany m_Company)
+        {
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterCompanyFormToDB ran Successfully - ");
+                string Register_ApplicationsQuery = "insert into Register_Applications values ('" + m_Company.Name + "', '" + m_Company.Email + "', 'Company', 0)";
+                SqlQuery.Write_ToDB(Register_ApplicationsQuery);
+
+                string sqlQuery = "insert into Buisness_Companies values ('" + m_Company.Name + "','" + m_Company.Email + "','" + m_Company.Image + "',getdate())";
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
 
         public void ApproveUserQuery(M_Register_Applications m_Register_App)
         {
-            string updateQuery = "update Register_Applications set Is_Approved = 1 where code = " + m_Register_App.Code + "";
-            SqlQuery.Write_ToDB(updateQuery);
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ ApproveUserQuery ran Successfully - ");
+                string updateQuery = "update Register_Applications set Is_Approved = 1 where code = " + m_Register_App.Code + "";
+                SqlQuery.Write_ToDB(updateQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
 
         public void Is_ActiveCampaignsQuery(M_Campaign m_Campaign)
         {
-            string updateQuery = "update Campaigns set Is_Active = ~Is_Active where code = " + m_Campaign.Code + "";
-            SqlQuery.Write_ToDB(updateQuery);
-        }
-        
-        public DataTable Send_getTweetsListQuery()
-        {
-            return SqlQuery.Read_Table_FormDB("select * from Tweets");
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ Is_ActiveCampaignsQuery ran Successfully - ");
+                string updateQuery = "update Campaigns set Is_Active = ~Is_Active where code = " + m_Campaign.Code + "";
+                SqlQuery.Write_ToDB(updateQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+
+            }
+
         }
 
-        public DataTable Send_getSocialActivistListQuery()
+        public void EnterCampaignFormToDB(M_Campaign m_Campaign)
         {
-            return SqlQuery.Read_Table_FormDB("select * from Social_Activist");
-        }
-        public DataTable Send_getNPOListQuery()
-        {
-            return SqlQuery.Read_Table_FormDB("select * from Non_Profit_Organizations");
-        }
-
-        public DataTable Send_getCompanyListQuery()
-        {
-            return SqlQuery.Read_Table_FormDB("select * from Buisness_Companies");
-        }
-        public DataTable Send_getAllCampaignsListByNPO_CodeQuery(string NPO_code)
-        {
-            return SqlQuery.Read_Table_FormDB("select * from Campaigns where NPO_code =" + NPO_code);
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterCampaignFormToDB ran Successfully - ");
+                string sqlQuery = "insert into Campaigns values ('" + m_Campaign.Name + "','" + m_Campaign.Email + "','" + m_Campaign.Description + "','" + m_Campaign.Landing_Page_URL + "','" + m_Campaign.HashTag + "','" + m_Campaign.NPO_code + "','" + m_Campaign.Image + "',1)";
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
-        public DataTable Send_getAllCampaignsListQuery()
+        public void EnterEditCampaignFormToDB(M_Campaign m_Campaign)
         {
-            return SqlQuery.Read_Table_FormDB("select * from Campaigns");
-        }
-
-        
-
-        //**************************************************** Company *****************************************
-
-        public DataTable Send_getProductListQuery(string BC_code)
-        {
-            return SqlQuery.Read_Table_FormDB("select * from Products where BC_Code ="+ BC_code);
-        }
-
-        public void DeleteProductQuery(string productCode)
-        {
-            string deleteQuery = "delete from Products where Code = " + productCode;
-            SqlQuery.Write_ToDB(deleteQuery);
-        }
-
-        public DataTable Send_getOrderDetailQuery(string BC_code)
-        {
-            return SqlQuery.Read_Table_FormDB("select Orders.*, SA.FirstName+' '+ SA.LastName as SA_Name, BC.Name as BC_Name, Campaigns.Name as Campaign_Name, Products.Name as Product_Name, \r\nSA.Address as Activist_Address, SA.Phone_Number as Activist_Phone,\r\nSA.Email as Activist_Email, Campaigns.Email as Campaign_Email \r\nfrom Orders\r\ninner join Social_Activist as SA on Orders.SA_code = SA.Code\r\ninner join Buisness_Companies as BC on Orders.BC_code = BC.Code\r\ninner join Campaigns on Orders.Campaign_code = Campaigns.Code\r\ninner join Products on Orders.Product_code = Products.Code where Orders.BC_code= " + BC_code);
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterEditCampaignFormToDB ran Successfully - ");
+                string sqlQuery = "update Campaigns set Name = '" + m_Campaign.Name + "', Email = '" + m_Campaign.Email + "', Description = '" + m_Campaign.Description + "', Landing_Page_URL = '" + m_Campaign.Landing_Page_URL + "',HashTag = '" + m_Campaign.HashTag + "', Image = '" + m_Campaign.Image + "' where Code = " + m_Campaign.Code;
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
         public void Is_sendForOrderQuery(M_Order m_Order)
         {
-            string updateQuery = "update Orders set Is_Sent = ~Is_Sent where code = " + m_Order.Code + "";
-            SqlQuery.Write_ToDB(updateQuery);
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ Is_sendForOrderQuery ran Successfully - ");
+                string updateQuery = "update Orders set Is_Sent = ~Is_Sent where code = " + m_Order.Code + "";
+                SqlQuery.Write_ToDB(updateQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
+
         }
-        
 
-
-        //**************************************************** Activist *****************************************
-        public DataTable Send_getProductListForActivistQuery(string Campaign_code)
+        public void EnterProductFormToDB(M_Product m_Product)
         {
-            return SqlQuery.Read_Table_FormDB("select * from Products where Campaign_code =" + Campaign_code);
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterProductFormToDB ran Successfully - ");
+                string sqlQuery = "insert into Products values ('" + m_Product.Name + "','" + m_Product.Price + "','" + m_Product.Description + "','" + m_Product.Units_In_Stock + "','" + m_Product.BC_code + "','" + m_Product.Campaign_code + "','" + m_Product.Image + "')";
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
 
-
-        public DataTable Send_getNEWMoneyStatusForActivistQuery(string NEWMoneyStatus, string SA_Code)
+        public void EnterEditProductFormToDB(M_Product m_Product)
         {
-            string updateQuery = "update Social_Activist set Money_Status = '" + NEWMoneyStatus + "' where Code =" + SA_Code;
-            SqlQuery.Write_ToDB(updateQuery);
-
-            return SqlQuery.Read_Table_FormDB("select * from Social_Activist");
+            try
+            {
+                Log.LogEvent(@"DataSql \ DS_UsersQ \ EnterEditProductFormToDB ran Successfully - ");
+                string sqlQuery = "update Products set Name = '" + m_Product.Name + "', Price = '" + m_Product.Price + "', Description = '" + m_Product.Description + "', Units_In_Stock = '" + m_Product.Units_In_Stock + "',BC_code = '" + m_Product.BC_code + "', Campaign_code = '" + m_Product.Campaign_code + "', Image = '" + m_Product.Image + "' where Code = " + m_Product.Code;
+                SqlQuery.Write_ToDB(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                Log.LogException($@"An Exception occurred while initializing the {ex.StackTrace} : {ex.Message}", ex);
+            }
         }
-
-        public DataTable Send_getAllMyProductForActivistQuery(string SA_code)
-        {
-            return SqlQuery.Read_Table_FormDB("SELECT Products.Name as 'Product_Name', Products.Price as 'Price', COUNT(Orders.Code) as 'Total_Donations',\r\nsum(Orders.Quantity) as 'Quantity',Products.Price*sum(Orders.Quantity) as 'Total_Price', Campaigns.Name as 'Campaign_Name'\r\nFROM Orders\r\nJOIN Products ON Products.Code = Orders.Product_code\r\nJOIN Campaigns ON Orders.Campaign_code = Campaigns.Code\r\nWHERE Orders.SA_code = " + SA_code + "\r\nGROUP BY Products.Name, Products.Price, Campaigns.Name;");
-        }
-
-
-        public DataTable MoneyByTwitterQuery(string userInfoCode)
-        {
-            string updateQuery = $"update Social_Activist set Money_Status = Money_Status + 5 where code = {userInfoCode}";
-            return SqlQuery.Read_Table_FormDB(updateQuery);
-        }
-
-        public void UpdateTweetAndSA_MoneyQuery(M_Tweets newTweet)
-        {
-            string updateQuery = "if not exists(select Code from Tweets where Tweet_id like '" + newTweet.Tweet_id + "')\r\n\tbegin\r\n\t\tinsert into Tweets values (" + newTweet.SA_code + ", " + newTweet.Campaign_code + ", '" + newTweet.HashTag + "', '" + newTweet.Landing_Page_URL + "', '" + newTweet.Tweet_Content + "', getdate(), '" + newTweet.Tweet_id + "')\r\n\t\tupdate Social_Activist set Money_Status = Money_Status + 10 where Code = " + newTweet.SA_code + "\r\n\tend";
-            SqlQuery.Write_ToDB(updateQuery);
-        }
-
     }
-    
-
 }
