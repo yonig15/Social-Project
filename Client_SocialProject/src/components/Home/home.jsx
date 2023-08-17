@@ -25,7 +25,7 @@ export const Home = () => {
     <div className="CarouselComponent--container">
       <div
         id="carouselExampleDark"
-        class="carousel carousel-dark slide"
+        className="carousel carousel-dark slide"
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators"></div>
