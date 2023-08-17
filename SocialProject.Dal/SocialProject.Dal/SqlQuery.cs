@@ -48,6 +48,9 @@ namespace SocialProject.Dal
             return result;
         }
 
+
+
+
         //public static void WriteWithValuesToDB(string query, Dictionary<string, object> parameters)
         //{
         //    using (SqlConnection connection = new SqlConnection(connectionString))
