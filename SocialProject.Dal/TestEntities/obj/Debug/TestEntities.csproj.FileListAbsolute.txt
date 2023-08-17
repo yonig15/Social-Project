@@ -1,0 +1,6 @@
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\TestEntities\bin\Debug\TestEntities.dll
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\TestEntities\bin\Debug\TestEntities.pdb
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\TestEntities\obj\Debug\TestEntities.csproj.AssemblyReference.cache
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\TestEntities\obj\Debug\TestEntities.csproj.CoreCompileInputs.cache
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\TestEntities\obj\Debug\TestEntities.dll
+C:\level-up\Semester B\Midel Project\SocialProject.Dal\TestEntities\obj\Debug\TestEntities.pdb
